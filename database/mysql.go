@@ -6,7 +6,8 @@ import (
 	"gorm.io/gorm"
 )
 
-func MysqlDb(dbConfig *DbConfig) (*gorm.DB, error) {
+// GetMysqlDb get instance
+func GetMysqlDb(dbConfig *DbConfig) (*gorm.DB, error) {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=%v&loc=Local", dbConfig.User, dbConfig.Password, dbConfig.Host, dbConfig.Port, dbConfig.Database, dbConfig.Charset, dbConfig.ParseTime)
 	//参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})

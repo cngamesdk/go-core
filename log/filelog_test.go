@@ -1,15 +1,11 @@
 package log
 
 import (
+	"go.uber.org/zap"
 	"testing"
-	"time"
 )
 
 func TestFileLog(t *testing.T) {
-	log := FileLog(
-		"/Applications/projects/cngamesdk/go-core/log/test.%Y%m%d%H%M.log",
-		time.Hour*24*90,
-		time.Minute,
-	)
-	log.Info(time.Now())
+	log := CreateFileLoggerByLevel(&FileOption{FileName: "/your/app/test.log"})
+	log.Info("Come", zap.String("request_id", "123"))
 }
