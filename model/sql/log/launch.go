@@ -1,0 +1,35 @@
+package log
+
+import (
+	"context"
+	"github.com/cngamesdk/go-core/model/sql"
+	"gorm.io/gorm"
+	"time"
+)
+
+const (
+	ActionActive = "active" // 激活
+	ActionLaunch = "launch" // 启动
+)
+
+type OdsLaunchLogModel struct {
+	sql.SqlBaseModel
+	Action     string    `json:"action" gorm:"size:50;column:action;default:'';comment:行为"`
+	ActionTime time.Time `json:"action_time" gorm:"type:datetime(0);column:action_time;comment:行为时间"`
+	sql.SqlCommonModel
+	Db func() *gorm.DB `json:"-" gorm:"-"`
+}
+
+func (receiver *OdsLaunchLogModel) TableName() string {
+	return "ods_launch_log"
+}
+
+func (receiver *OdsLaunchLogModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Select(fields).Where(query, args...).Take(receiver).Error
+	return
+}
+
+func (receiver *OdsLaunchLogModel) Create(ctx context.Context) (err error) {
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
+	return
+}
