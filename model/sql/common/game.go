@@ -14,8 +14,39 @@ const (
 	GameTypeWechatMiniGame = "wechat-mini-game"
 	GameTypeDouyinMiniGame = "douyin-mini-game"
 	OsAndroid              = "android"
-	OsIos                  = "Ios"
+	OsIos                  = "ios"
 )
+
+var (
+	GameTypes = map[string]string{
+		GameTypeMobileGame:     "手游",
+		GameTypeHtml5Game:      "H5游戏",
+		GameTypeWechatMiniGame: "微信小游戏",
+		GameTypeDouyinMiniGame: "抖音小游戏",
+	}
+	GameOss = map[string]string{
+		OsAndroid: "安卓",
+		OsIos:     "iOS",
+	}
+)
+
+// GetGameTypeName 获取游戏类型名称
+func GetGameTypeName(req string) string {
+	resp, ok := GameTypes[req]
+	if !ok {
+		return ""
+	}
+	return resp
+}
+
+// GetGameOsName 获取游戏系统名称
+func GetGameOsName(req string) string {
+	resp, ok := GameOss[req]
+	if !ok {
+		return ""
+	}
+	return resp
+}
 
 // DimGameModel 游戏维度
 type DimGameModel struct {
