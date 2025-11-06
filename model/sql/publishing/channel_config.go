@@ -10,7 +10,6 @@ import (
 type DimPublishingChannelConfigModel struct {
 	sql.SqlBaseModel
 	ChannelName string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:发行渠道名称"`
-	AgentId     int             `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 
