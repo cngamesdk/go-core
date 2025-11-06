@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	DimPayChannelModelPayTypeWeiXin    = "wei-xin"
+	DimPayChannelModelPayTypeWeiXin    = "wei-xin-pay"
 	DimPayChannelModelPayTypeAlipay    = "alipay"
 	DimPayChannelModelPayTypeDouYinPay = "dou-yin-pay"
 )
@@ -18,21 +18,24 @@ var PayTypes = map[string]string{
 	DimPayChannelModelPayTypeDouYinPay: "抖音支付",
 }
 
-// ValidPayType 是否有效支付方式
-func ValidPayType(payType string) bool {
-	_, ok := PayTypes[payType]
-	return ok
+// GetPayTypeName 获取支付名称
+func GetPayTypeName(payType string) string {
+	name, ok := PayTypes[payType]
+	if !ok {
+		return ""
+	}
+	return name
 }
 
 // DimRootGameModel 主游戏维度
 type DimPayChannelModel struct {
 	sql2.SqlBaseModel
-	ChannelName        string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:渠道名称"`
-	CompanyId          int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
-	PayType            string          `json:"pay_type" gorm:"size:50;column:pay_type;default:'';comment:支付类型"`
-	Status             string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
-	ProfitSharingRatio int             `json:"profit_sharing_ratio" gorm:"column:profit_sharing_ratio;default:0;comment:分成比例，如30为30%"`
-	Db                 func() *gorm.DB `json:"-" gorm:"-"`
+	ChannelName string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:渠道名称"`
+	CompanyId   int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
+	PayType     string          `json:"pay_type" gorm:"size:50;column:pay_type;default:'';comment:支付类型"`
+	Status      string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
+	Rate        int             `json:"rate" gorm:"column:rate;default:0;comment:费率，如5为5%"`
+	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 
 func (receiver *DimPayChannelModel) TableName() string {
