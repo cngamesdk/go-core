@@ -9,12 +9,16 @@ import (
 )
 
 const (
-	GameTypeMobileGame     = "mobile-game"
-	GameTypeHtml5Game      = "html5-game"
-	GameTypeWechatMiniGame = "wechat-mini-game"
-	GameTypeDouyinMiniGame = "douyin-mini-game"
-	OsAndroid              = "android"
-	OsIos                  = "ios"
+	GameTypeMobileGame             = "mobile-game"
+	GameTypeHtml5Game              = "html5-game"
+	GameTypeWechatMiniGame         = "wechat-mini-game"
+	GameTypeDouyinMiniGame         = "douyin-mini-game"
+	OsAndroid                      = "android"
+	OsIos                          = "ios"
+	GameStatusNormal               = sql2.StatusNormal
+	GameStatusRemove               = sql2.StatusRemove
+	CooperationModelSelfOperation  = "self-operation"  // 自营
+	CooperationModelJointOperation = "joint-operation" // 联运
 )
 
 var (
@@ -27,6 +31,14 @@ var (
 	GameOss = map[string]string{
 		OsAndroid: "安卓",
 		OsIos:     "iOS",
+	}
+	GameStatuss = map[string]string{
+		GameStatusNormal: "正常",
+		GameStatusRemove: "下架",
+	}
+	CooperationModels = map[string]string{
+		CooperationModelSelfOperation:  "自营",
+		CooperationModelJointOperation: "联运",
 	}
 )
 
@@ -48,20 +60,42 @@ func GetGameOsName(req string) string {
 	return resp
 }
 
+// GetStatusName 获取状态名称
+func GetStatusName(req string) string {
+	resp, ok := GameStatuss[req]
+	if !ok {
+		return ""
+	}
+	return resp
+}
+
+func GetCooperationModelName(req string) string {
+	resp, ok := CooperationModels[req]
+	if !ok {
+		return ""
+	}
+	return resp
+}
+
 // DimGameModel 游戏维度
 type DimGameModel struct {
 	sql2.SqlBaseModel
-	GameName    string          `json:"game_name" gorm:"size:100;column:game_name;default:'';comment:游戏名称"`
-	PackageName string          `json:"package_name" gorm:"size:100;column:package_name;default:'';comment:包名"`
-	GameType    string          `json:"game_type" gorm:"size:50;column:game_type;default:'';comment:游戏类型"`
-	Os          string          `json:"os" gorm:"size:50;column:os;default:'';comment:操作系统"`
-	CpUrl       string          `json:"cp_url" gorm:"size:1024;column:cp_url;default:'';comment:发货地址"`
-	MainId      int64           `json:"main_id" gorm:"column:main_id;default:0;comment:主游戏ID"`
-	GameRate    int             `json:"game_rate" gorm:"column:game_rate;default:0;comment:游戏币兑换比例"`
-	CpGameId    int64           `json:"cp_game_id" gorm:"column:cp_game_id;default:0;comment:研发对接的游戏ID"`
-	CompanyId   int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
-	Db          func() *gorm.DB `json:"-" gorm:"-"`
-	GetHashKey  func() string   `json:"-" gorm:"-"`
+	GameName         string          `json:"game_name" gorm:"size:100;column:game_name;default:'';comment:游戏名称"`
+	PackageName      string          `json:"package_name" gorm:"size:150;column:package_name;default:'';comment:包名"`
+	AppId            string          `json:"app_id" gorm:"size:100;column:app_id;default:'';comment:应用ID"`
+	AppName          string          `json:"app_name" gorm:"size:100;column:app_name;default:'';comment:应用名称"`
+	GameType         string          `json:"game_type" gorm:"size:50;column:game_type;default:'';comment:游戏类型"`
+	Os               string          `json:"os" gorm:"size:50;column:os;default:'';comment:操作系统"`
+	CpUrl            string          `json:"cp_url" gorm:"size:1024;column:cp_url;default:'';comment:发货地址"`
+	MainId           int64           `json:"main_id" gorm:"column:main_id;default:0;comment:主游戏ID"`
+	GameCoinName     string          `json:"game_coin_name" gorm:"column:game_coin_name;default:'';comment:游戏币名称"`
+	GameRate         int             `json:"game_rate" gorm:"column:game_rate;default:0;comment:游戏币兑换比例"`
+	CpGameId         int64           `json:"cp_game_id" gorm:"column:cp_game_id;default:0;comment:研发对接的游戏ID"`
+	CompanyId        int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
+	Status           string          `json:"status" gorm:"size:50;column:status;default:'';comment:游戏状态"`
+	CooperationModel string          `json:"cooperation_model" gorm:"size:50;column:cooperation_model;default:'';comment:合作方式"`
+	Db               func() *gorm.DB `json:"-" gorm:"-"`
+	GetHashKey       func() string   `json:"-" gorm:"-"`
 }
 
 func (receiver *DimGameModel) TableName() string {
