@@ -1,0 +1,34 @@
+package advertising
+
+import (
+	"context"
+	sql2 "github.com/cngamesdk/go-core/model/sql"
+	"gorm.io/gorm"
+)
+
+// DimChannelGroupModel 渠道组维度表
+type DimChannelGroupModel struct {
+	sql2.SqlBaseModel
+	ChannelGroupName   string          `json:"company_name" gorm:"size:100;column:company_name;default:'';comment:主体名称"`
+	AdvertisingMediaId int64           `json:"advertising_media_id" gorm:"column:advertising_media_id;default:0;comment:广告媒体ID"`
+	Db                 func() *gorm.DB `json:"-" gorm:"-"`
+}
+
+func (receiver *DimChannelGroupModel) TableName() string {
+	return "dim_channel_group"
+}
+
+func (receiver *DimChannelGroupModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Select(fields).Where(query, args...).Take(receiver).Error
+	return
+}
+
+func (receiver *DimChannelGroupModel) Create(ctx context.Context) (err error) {
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
+	return
+}
+
+func (receiver *DimChannelGroupModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args).Updates(receiver).Error
+	return
+}
