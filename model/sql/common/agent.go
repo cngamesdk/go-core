@@ -15,11 +15,30 @@ const (
 	SettlementTypeCpc  = "cpc"  //结算类型-CPC
 )
 
+var SettlementTypes = map[string]string{
+	SettlementTypeFree: "免费",
+	SettlementTypeCps:  "CPS",
+	SettlementTypeCpa:  "CPA",
+	SettlementTypeCpt:  "CPT",
+	SettlementTypeCpm:  "CPM",
+	SettlementTypeCpc:  "CPC",
+}
+
+// GetSettlementTypeName 获取结算类型名称
+func GetSettlementTypeName(req string) string {
+	resp, ok := SettlementTypes[req]
+	if !ok {
+		return ""
+	}
+	return resp
+}
+
 // DimAgentModel 主体维度表
 type DimAgentModel struct {
 	sql2.SqlBaseModel
 	AgentName      string          `json:"agent_name" gorm:"size:100;column:agent_name;default:'';comment:渠道名称"`
 	SettlementType string          `json:"settlement_type" gorm:"size:50;column:settlement_type;default:'';comment:结算类型"`
+	ChannelGroupId int64           `json:"channel_group_id" gorm:"column:channel_group_id;default:0;comment:渠道组ID"`
 	Db             func() *gorm.DB `json:"-" gorm:"-"`
 }
 
