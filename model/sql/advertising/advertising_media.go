@@ -14,7 +14,7 @@ type DimAdvertisingMediaModel struct {
 }
 
 func (receiver *DimAdvertisingMediaModel) TableName() string {
-	return "dim_channel_group"
+	return "dim_advertising_media"
 }
 
 func (receiver *DimAdvertisingMediaModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
