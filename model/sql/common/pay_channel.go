@@ -10,12 +10,28 @@ const (
 	DimPayChannelModelPayTypeWeiXin    = "wei-xin-pay"
 	DimPayChannelModelPayTypeAlipay    = "alipay"
 	DimPayChannelModelPayTypeDouYinPay = "dou-yin-pay"
+	PayChannelStatusNormal             = sql2.StatusNormal
+	PayChannelStatusDelete             = sql2.StatusDelete
 )
 
 var PayTypes = map[string]string{
 	DimPayChannelModelPayTypeWeiXin:    "微信支付",
 	DimPayChannelModelPayTypeAlipay:    "支付宝支付",
 	DimPayChannelModelPayTypeDouYinPay: "抖音支付",
+}
+
+var PayStatuss = map[string]string{
+	PayChannelStatusNormal: "正常",
+	PayChannelStatusDelete: "删除",
+}
+
+// GetPayStatusName 获取状态名称
+func GetPayStatusName(req string) string {
+	name, ok := PayStatuss[req]
+	if !ok {
+		return ""
+	}
+	return name
 }
 
 // GetPayTypeName 获取支付名称
