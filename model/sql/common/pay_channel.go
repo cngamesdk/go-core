@@ -7,17 +7,17 @@ import (
 )
 
 const (
-	DimPayChannelModelPayTypeWeiXin    = "wei-xin-pay"
-	DimPayChannelModelPayTypeAlipay    = "alipay"
-	DimPayChannelModelPayTypeDouYinPay = "dou-yin-pay"
-	PayChannelStatusNormal             = sql2.StatusNormal
-	PayChannelStatusDelete             = sql2.StatusDelete
+	PayTypeWeiXinPay       = "wei-xin-pay"
+	PayTypeAlipay          = "alipay"
+	PayTypeDouYinPay       = "dou-yin-pay"
+	PayChannelStatusNormal = sql2.StatusNormal
+	PayChannelStatusDelete = sql2.StatusDelete
 )
 
 var PayTypes = map[string]string{
-	DimPayChannelModelPayTypeWeiXin:    "微信支付",
-	DimPayChannelModelPayTypeAlipay:    "支付宝支付",
-	DimPayChannelModelPayTypeDouYinPay: "抖音支付",
+	PayTypeWeiXinPay: "微信支付",
+	PayTypeAlipay:    "支付宝支付",
+	PayTypeDouYinPay: "抖音支付",
 }
 
 var PayStatuss = map[string]string{
