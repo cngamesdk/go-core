@@ -8,6 +8,8 @@ const (
 	StatusForbidden = "forbidden"
 	StatusRemove    = "remove"  // 下架
 	StatusClaimed   = "claimed" // 已领取
+	StatusSuccess   = "success" // 成功
+	StatusFail      = "fail"    // 失败
 )
 
 type SqlBaseModel struct {
@@ -21,9 +23,8 @@ type SqlCommonModel struct {
 	AgentId        int    `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
 	SiteId         int    `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID"`
 	MediaSiteId    int    `json:"media_site_id" gorm:"column:media_site_id;default:0;comment:媒体广告位Id"`
-	Idfa           string `json:"idfa" gorm:"size:100;column:idfa;default:'';comment:iOS idfa"`
 	Idfv           string `json:"idfv" gorm:"size:100;column:idfv;default:'';comment:iOS idfv"`
-	Imei           string `json:"imei" gorm:"size:100;column:imei;default:'';comment:安卓imei"`
+	Imei           string `json:"imei" gorm:"size:100;column:imei;default:'';comment:安卓imei/iOS为idfa,获取不到为空"`
 	Oaid           string `json:"oaid" gorm:"size:150;column:oaid;default:'';comment:安卓oaid"`
 	AndriodId      string `json:"andriod_id" gorm:"size:100;column:andriod_id;default:'';comment:安卓andriod_id"`
 	SystemVersion  string `json:"system_version" gorm:"size:50;column:system_version;default:'';comment:系统版本号"`
