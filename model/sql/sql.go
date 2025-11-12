@@ -19,10 +19,10 @@ type SqlBaseModel struct {
 }
 
 type SqlCommonModel struct {
-	GameId         int    `json:"game_id" gorm:"column:game_id;default:0;comment:游戏ID"`
-	AgentId        int    `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
-	SiteId         int    `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID"`
-	MediaSiteId    int    `json:"media_site_id" gorm:"column:media_site_id;default:0;comment:媒体广告位Id"`
+	GameId         int64  `json:"game_id" gorm:"column:game_id;default:0;comment:游戏ID"`
+	AgentId        int64  `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
+	SiteId         int64  `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID"`
+	MediaSiteId    int64  `json:"media_site_id" gorm:"column:media_site_id;default:0;comment:媒体广告位Id"`
 	Idfv           string `json:"idfv" gorm:"size:100;column:idfv;default:'';comment:iOS idfv"`
 	Imei           string `json:"imei" gorm:"size:100;column:imei;default:'';comment:安卓imei/iOS为idfa,获取不到为空"`
 	Oaid           string `json:"oaid" gorm:"size:150;column:oaid;default:'';comment:安卓oaid"`
@@ -34,7 +34,7 @@ type SqlCommonModel struct {
 	ClientIp       string `json:"client_ip" gorm:"size:150;column:client_ip;default:'';comment:客户端IP"`
 	Ipv4           string `json:"ipv4" gorm:"size:150;column:ipv4;default:'';comment:ipv4地址"`
 	Ipv6           string `json:"ipv6" gorm:"size:150;column:ipv6;default:'';comment:ipv6地址"`
-	ChannelId      int    `json:"channel_id" gorm:"column:channel_id;default:0;comment:联运渠道ID"`
+	ChannelId      int64  `json:"channel_id" gorm:"column:channel_id;default:0;comment:联运渠道ID"`
 	Model          string `json:"model" gorm:"size:50;column:model;default:'';comment:机型"`
 	Brand          string `json:"brand" gorm:"size:50;column:brand;default:'';comment:品牌"`
 	UserAgent      string `json:"user_agent" gorm:"size:1024;column:user_agent;default:'';comment:用户UA"`
