@@ -27,7 +27,7 @@ var (
 
 type OdsUserInfoLogModel struct {
 	sql.SqlBaseModel
-	PlatformId    int                           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	PlatformId    int64                         `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
 	UserName      string                        `json:"user_name" gorm:"size:50;column:user_name;default:'';comment:用户名;uniqueIndex:ix_plat_name"`
 	Password      string                        `json:"-" gorm:"-"`
 	PasswordCrypt string                        `json:"-" gorm:"size:50;column:password_crypt;default:'';comment:密码加密"`
