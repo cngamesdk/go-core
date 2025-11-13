@@ -10,9 +10,10 @@ import (
 // DwdRootGameBackRegLogModel 按根游戏回流注册日志
 type DwdRootGameBackRegLogModel struct {
 	sql.SqlBaseModel
-	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_game_user_time"`
-	RootGameId int       `json:"root_game_id" gorm:"column:root_game_id;default:0;comment:游戏ID;uniqueIndex:ix_game_user_time"`
-	RegTime    time.Time `json:"reg_time" gorm:"type:datetime(0);column:reg_time;comment:注册时间;uniqueIndex:ix_game_user_time"`
+	PlatformId int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_user_time"`
+	RootGameId int       `json:"root_game_id" gorm:"column:root_game_id;default:0;comment:游戏ID;uniqueIndex:ix_plat_game_user_time"`
+	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_plat_game_user_time"`
+	RegTime    time.Time `json:"reg_time" gorm:"type:datetime(0);column:reg_time;comment:注册时间;uniqueIndex:ix_plat_game_user_time"`
 	LastTime   time.Time `json:"last_time" gorm:"type:datetime(0);column:last_time;comment:最后时间:最后登录时间+30天;"`
 	sql.SqlCommonModel
 	Db func() *gorm.DB `json:"-" gorm:"-"`

@@ -36,9 +36,10 @@ func GetSettlementTypeName(req string) string {
 // DimAgentModel 主体维度表
 type DimAgentModel struct {
 	sql2.SqlBaseModel
-	AgentName      string          `json:"agent_name" gorm:"size:100;column:agent_name;default:'';comment:渠道名称"`
+	PlatformId     int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_group_name"`
+	ChannelGroupId int64           `json:"channel_group_id" gorm:"column:channel_group_id;default:0;comment:渠道组ID;uniqueIndex:ix_plat_group_name"`
+	AgentName      string          `json:"agent_name" gorm:"size:100;column:agent_name;default:'';comment:渠道名称;uniqueIndex:ix_plat_group_name"`
 	SettlementType string          `json:"settlement_type" gorm:"size:50;column:settlement_type;default:'';comment:结算类型"`
-	ChannelGroupId int64           `json:"channel_group_id" gorm:"column:channel_group_id;default:0;comment:渠道组ID"`
 	Db             func() *gorm.DB `json:"-" gorm:"-"`
 }
 

@@ -9,9 +9,10 @@ import (
 // DimAgentModel 主体维度表
 type DimSiteModel struct {
 	sql2.SqlBaseModel
-	SiteName string          `json:"site_name" gorm:"size:100;column:site_name;default:'';comment:广告位名称"`
-	AgentId  int64           `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
-	Db       func() *gorm.DB `json:"-" gorm:"-"`
+	PlatformId int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_agent_name"`
+	AgentId    int64           `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID;uniqueIndex:ix_plat_agent_name"`
+	SiteName   string          `json:"site_name" gorm:"size:100;column:site_name;default:'';comment:广告位名称;uniqueIndex:ix_plat_agent_name"`
+	Db         func() *gorm.DB `json:"-" gorm:"-"`
 }
 
 func (receiver *DimSiteModel) TableName() string {

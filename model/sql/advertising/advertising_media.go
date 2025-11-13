@@ -9,7 +9,8 @@ import (
 // DimAdvertisingMediaModel 广告媒体维度表
 type DimAdvertisingMediaModel struct {
 	sql2.SqlBaseModel
-	AdvertisingMediaName string          `json:"advertising_media_name" gorm:"size:100;column:advertising_media_name;default:'';comment:广告媒体名称"`
+	PlatformId           int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	AdvertisingMediaName string          `json:"advertising_media_name" gorm:"size:100;column:advertising_media_name;default:'';comment:广告媒体名称;uniqueIndex:ix_plat_name"`
 	Db                   func() *gorm.DB `json:"-" gorm:"-"`
 }
 

@@ -9,8 +9,9 @@ import (
 // DimChannelGroupModel 渠道组维度表
 type DimChannelGroupModel struct {
 	sql2.SqlBaseModel
-	ChannelGroupName   string          `json:"company_name" gorm:"size:100;column:company_name;default:'';comment:主体名称"`
-	AdvertisingMediaId int64           `json:"advertising_media_id" gorm:"column:advertising_media_id;default:0;comment:广告媒体ID"`
+	PlatformId         int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_media_name"`
+	AdvertisingMediaId int64           `json:"advertising_media_id" gorm:"column:advertising_media_id;default:0;comment:广告媒体ID;uniqueIndex:ix_plat_media_name"`
+	ChannelGroupName   string          `json:"company_name" gorm:"size:100;column:company_name;default:'';comment:主体名称;uniqueIndex:ix_plat_media_name"`
 	Db                 func() *gorm.DB `json:"-" gorm:"-"`
 }
 

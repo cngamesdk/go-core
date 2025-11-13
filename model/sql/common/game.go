@@ -80,22 +80,20 @@ func GetCooperationModelName(req string) string {
 // DimGameModel 游戏维度
 type DimGameModel struct {
 	sql2.SqlBaseModel
+	PlatformId       int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID"`
 	GameName         string          `json:"game_name" gorm:"size:100;column:game_name;default:'';comment:游戏名称"`
 	PackageName      string          `json:"package_name" gorm:"size:150;column:package_name;default:'';comment:包名"`
 	AppId            string          `json:"app_id" gorm:"size:100;column:app_id;default:'';comment:应用ID"`
 	AppName          string          `json:"app_name" gorm:"size:100;column:app_name;default:'';comment:应用名称"`
 	GameType         string          `json:"game_type" gorm:"size:50;column:game_type;default:'';comment:游戏类型"`
 	Os               string          `json:"os" gorm:"size:50;column:os;default:'';comment:操作系统"`
-	CpUrl            string          `json:"cp_url" gorm:"size:1024;column:cp_url;default:'';comment:发货地址"`
 	MainId           int64           `json:"main_id" gorm:"column:main_id;default:0;comment:主游戏ID"`
 	GameCoinName     string          `json:"game_coin_name" gorm:"column:game_coin_name;default:'';comment:游戏币名称"`
 	GameRate         int             `json:"game_rate" gorm:"column:game_rate;default:0;comment:游戏币兑换比例"`
-	CpGameId         int64           `json:"cp_game_id" gorm:"column:cp_game_id;default:0;comment:研发对接的游戏ID"`
 	CompanyId        int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
 	Status           string          `json:"status" gorm:"size:50;column:status;default:'';comment:游戏状态"`
 	CooperationModel string          `json:"cooperation_model" gorm:"size:50;column:cooperation_model;default:'';comment:合作方式"`
 	Db               func() *gorm.DB `json:"-" gorm:"-"`
-	GetHashKey       func() string   `json:"-" gorm:"-"`
 }
 
 func (receiver *DimGameModel) TableName() string {
@@ -117,22 +115,17 @@ func (receiver *DimGameModel) Updates(ctx context.Context, query interface{}, ar
 	return
 }
 
-func (receiver *DimGameModel) GetAppKey() string {
-	return cryptor.Md5String(fmt.Sprintf("game-app-key-%d-%s", receiver.Id, receiver.GetHashKey()))
+// GetGameAppKey 获取与APP前端通信密钥
+func GetGameAppKey(gameId int64, key string) string {
+	return cryptor.Md5String(fmt.Sprintf("game-app-key-%d-%s", gameId, key))
 }
 
-func (receiver *DimGameModel) GetLoginKey() string {
-	gameId := receiver.Id
-	if receiver.CpGameId > 0 {
-		gameId = receiver.CpGameId
-	}
-	return cryptor.Md5String(fmt.Sprintf("game-login-key-%d-%s", gameId, receiver.GetHashKey()))
+// GetGameLoginKey 获取二次验证通信密钥
+func GetGameLoginKey(gameId int64, key string) string {
+	return cryptor.Md5String(fmt.Sprintf("game-login-key-%d-%s", gameId, key))
 }
 
-func (receiver *DimGameModel) GetPayKey() string {
-	gameId := receiver.Id
-	if receiver.CpGameId > 0 {
-		gameId = receiver.CpGameId
-	}
-	return cryptor.Md5String(fmt.Sprintf("game-pay-key-%d-%s", gameId, receiver.GetHashKey()))
+// GetGamePayKey 获取支付通信密钥
+func GetGamePayKey(gameId int64, key string) string {
+	return cryptor.Md5String(fmt.Sprintf("game-pay-key-%d-%s", gameId, key))
 }

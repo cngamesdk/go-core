@@ -8,12 +8,13 @@ import (
 )
 
 const (
-	ActionActive = "active" // 激活
-	ActionLaunch = "launch" // 启动
+	LaunchLogActionActive = "active" // 激活
+	LaunchLogActionLaunch = "launch" // 启动
 )
 
 type OdsLaunchLogModel struct {
 	sql.SqlBaseModel
+	PlatformId int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID"`
 	Action     string    `json:"action" gorm:"size:50;column:action;default:'';comment:行为"`
 	ActionTime time.Time `json:"action_time" gorm:"type:datetime(0);column:action_time;comment:行为时间"`
 	sql.SqlCommonModel

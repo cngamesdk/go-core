@@ -9,7 +9,8 @@ import (
 // DimPublishingChannelConfigModel 发行渠道配置表
 type DimPublishingChannelConfigModel struct {
 	sql.SqlBaseModel
-	ChannelName string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:发行渠道名称"`
+	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	ChannelName string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:发行渠道名称;uniqueIndex:ix_plat_name"`
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 

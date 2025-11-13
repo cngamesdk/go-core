@@ -9,7 +9,8 @@ import (
 // DimGameModel 主体维度表
 type DimCompanyModel struct {
 	sql2.SqlBaseModel
-	CompanyName      string          `json:"company_name" gorm:"size:100;column:company_name;default:'';comment:主体名称"`
+	PlatformId       int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	CompanyName      string          `json:"company_name" gorm:"size:100;column:company_name;default:'';comment:主体名称;uniqueIndex:ix_plat_name"`
 	UserAgreementUrl string          `json:"user_agreement_url" gorm:"size:512;column:user_agreement_url;default:'';comment:用户协议"`
 	PrivacyPolicyUrl string          `json:"privacy_policy_url" gorm:"size:512;column:privacy_policy_url;default:'';comment:隐私协议"`
 	Db               func() *gorm.DB `json:"-" gorm:"-"`

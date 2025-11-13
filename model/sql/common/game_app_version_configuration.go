@@ -8,8 +8,9 @@ import (
 
 type DimGameAppVersionConfiguration struct {
 	sql2.SqlBaseModel
-	GameId          int64           `json:"game_id" gorm:"column:game_id;default:0;comment:子游戏ID;uniqueIndex:ix_game_code"`
-	AppVersionCode  int64           `json:"app_version_code" gorm:"column:app_version_code;default:0;comment:整形AppCode;uniqueIndex:ix_game_code"`
+	PlatformId      int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_code"`
+	GameId          int64           `json:"game_id" gorm:"column:game_id;default:0;comment:子游戏ID;uniqueIndex:ix_plat_game_code"`
+	AppVersionCode  int64           `json:"app_version_code" gorm:"column:app_version_code;default:0;comment:整形AppCode;uniqueIndex:ix_plat_game_code"`
 	AppVersionName  string          `json:"app_version_name" gorm:"column:app_version_name;default:'';comment:字符串AppName"`
 	Remark          string          `json:"remark" gorm:"size:512;column:remark;default:'';comment:备注"`
 	ProductConfigId int64           `json:"product_config_id" gorm:"column:product_config_id;default:0;comment:产品配置ID"`

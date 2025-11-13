@@ -15,6 +15,7 @@ const (
 // OdsGiftListModel 礼包列表
 type OdsGiftListModel struct {
 	sql.SqlBaseModel
+	PlatformId   int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID"`
 	Icon         string          `json:"icon" gorm:"size:1024;column:icon;default:'';comment:礼包ICON"`
 	Title        string          `json:"title" gorm:"size:100;column:title;default:'';comment:标题"`
 	Desc         string          `json:"desc" gorm:"size:512;column:desc;default:'';comment:简介"`
