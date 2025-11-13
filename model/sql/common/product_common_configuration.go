@@ -9,7 +9,8 @@ import (
 // DimProductConfigurationModel 产品通用配置
 type DimProductCommonConfigurationModel struct {
 	sql2.SqlBaseModel
-	ConfigName      string          `json:"config_name" gorm:"size:100;column:config_name;default:'';comment:配置名称;uniqueIndex:ix_config_name"`
+	PlatformId      int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	ConfigName      string          `json:"config_name" gorm:"size:100;column:config_name;default:'';comment:配置名称;uniqueIndex:ix_plat_name"`
 	ShippingAddress string          `json:"shipping_address" gorm:"size:512;column:shipping_address;default:'';comment:发货地址"`
 	Db              func() *gorm.DB `json:"-" gorm:"-"`
 }

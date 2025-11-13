@@ -10,10 +10,11 @@ import (
 // OdsGiftClaimLogModel 礼包领取列表
 type OdsGiftClaimLogModel struct {
 	sql.SqlBaseModel
-	UserId     int64           `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID"`
+	PlatformId int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_gift_user_code"`
+	GiftId     int64           `json:"gift_id" gorm:"column:gift_id;default:0;comment:礼包ID;uniqueIndex:ix_plat_gift_user_code"`
+	UserId     int64           `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_plat_gift_user_code"`
+	Code       string          `json:"code" gorm:"size:50;column:code;comment:礼包码;uniqueIndex:ix_plat_gift_user_code"`
 	ActionTime time.Time       `json:"action_time" gorm:"type:datetime(0);column:action_time;comment:领取时间"`
-	GiftId     int64           `json:"gift_id" gorm:"column:gift_id;default:0;comment:礼包ID"`
-	Code       string          `json:"code" gorm:"size:50;column:code;comment:结束时间"`
 	Db         func() *gorm.DB `json:"-" gorm:"-"`
 }
 

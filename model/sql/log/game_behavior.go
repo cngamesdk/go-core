@@ -16,6 +16,7 @@ const (
 
 type OdsGameBehaviorLogModel struct {
 	sql.SqlBaseModel
+	PlatformId int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID"`
 	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID"`
 	ServerId   int64     `json:"server_id" gorm:"column:server_id;default:0;comment:区服ID"`
 	ServerName string    `json:"server_name" gorm:"size:100;column:server_name;default:'';comment:区服名称"`

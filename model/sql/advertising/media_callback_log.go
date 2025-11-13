@@ -20,7 +20,7 @@ const (
 
 type OdsMediaCallbackLogModel struct {
 	sql.SqlBaseModel
-	Platform     string          `json:"platform" gorm:"size:50;column:platform;default:'';comment:平台名称"`
+	PlatformId   int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台Id"`
 	GameId       int64           `json:"game_id" gorm:"column:game_id;default:0;comment:子游戏ID"`
 	SiteId       int64           `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID"`
 	UserId       int64           `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID"`

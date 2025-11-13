@@ -27,9 +27,11 @@ func GetAdvertisingMediaAccountStatusName(req string) string {
 // DimAdvertisingMediaAccountModel 广告媒体维度表
 type DimAdvertisingMediaAccountModel struct {
 	sql2.SqlBaseModel
+	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_account"`
 	AccountName string          `json:"account_name" gorm:"size:100;column:account_name;default:'';comment:帐户名称"`
-	AccountId   uint64          `json:"account_id" gorm:"size:100;column:account_id;default:0;comment:帐户ID"`
+	AccountId   uint64          `json:"account_id" gorm:"size:100;column:account_id;default:0;comment:帐户ID;uniqueIndex:ix_plat_account"`
 	Status      string          `json:"status" gorm:"size:100;column:status;default:'';comment:状态"`
+	ManageId    int64           `json:"manage_id" gorm:"column:manage_id;default:0;comment:超管主键ID"`
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 

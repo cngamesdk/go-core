@@ -10,8 +10,9 @@ import (
 // DwdRootGameRegLogModel 按根游戏注册日志
 type DwdRootGameRegLogModel struct {
 	sql.SqlBaseModel
-	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_game_user"`
-	RootGameId int       `json:"root_game_id" gorm:"column:root_game_id;default:0;comment:游戏ID;uniqueIndex:ix_game_user"`
+	PlatformId int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_user"`
+	RootGameId int       `json:"root_game_id" gorm:"column:root_game_id;default:0;comment:游戏ID;uniqueIndex:ix_plat_game_user"`
+	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_plat_game_user"`
 	RegTime    time.Time `json:"reg_time" gorm:"type:datetime(0);column:reg_time;comment:注册时间"`
 	sql.SqlCommonModel
 	Db func() *gorm.DB `json:"-" gorm:"-"`

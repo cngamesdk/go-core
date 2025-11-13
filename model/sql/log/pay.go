@@ -17,7 +17,8 @@ const (
 
 type OdsPayLogModel struct {
 	sql.SqlBaseModel
-	OrderId           string    `json:"order_id" gorm:"size:100;column:order_id;default:'';comment:订单ID;uniqueIndex:ix_order_id"`
+	PlatformId        int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_order"`
+	OrderId           string    `json:"order_id" gorm:"size:100;column:order_id;default:'';comment:订单ID;uniqueIndex:ix_plat_order"`
 	MerchantOrderId   string    `json:"merchant_order_id" gorm:"size:512;column:merchant_order_id;default:'';comment:商户订单ID"`
 	UserId            int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID"`
 	ServerId          int64     `json:"server_id" gorm:"column:server_id;default:0;comment:区服ID"`

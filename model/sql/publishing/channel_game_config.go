@@ -10,10 +10,11 @@ import (
 // DimPublishingChannelGameConfigModel 发行渠道游戏配置表
 type DimPublishingChannelGameConfigModel struct {
 	sql.SqlBaseModel
-	GameId       int                    `json:"game_id" gorm:"column:game_id;default:0;comment:游戏ID"`
-	ChannelId    int                    `json:"channel_id" gorm:"column:channel_id;default:0;comment:发行渠道ID"`
-	AgentId      int                    `json:"gift_id" gorm:"column:gift_id;default:0;comment:渠道ID"`
-	SiteId       int                    `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID;uniqueIndex:ix_s"`
+	PlatformId   int64                  `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_channel_site"`
+	GameId       int64                  `json:"game_id" gorm:"column:game_id;default:0;comment:游戏ID;uniqueIndex:ix_plat_game_channel_site"`
+	ChannelId    int64                  `json:"channel_id" gorm:"column:channel_id;default:0;comment:发行渠道ID;uniqueIndex:ix_plat_game_channel_site"`
+	AgentId      int64                  `json:"gift_id" gorm:"column:gift_id;default:0;comment:渠道ID"`
+	SiteId       int64                  `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID;uniqueIndex:ix_plat_game_channel_site"`
 	Config       string                 `json:"config" gorm:"type:text;column:config;comment:json配置"`
 	ConfigFormat map[string]interface{} `json:"config_format" gorm:"-"`
 	Db           func() *gorm.DB        `json:"-" gorm:"-"`

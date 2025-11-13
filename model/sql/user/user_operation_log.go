@@ -10,7 +10,8 @@ import (
 // OdsUserOperationLogModel 用户操作日志
 type OdsUserOperationLogModel struct {
 	sql.SqlBaseModel
-	UserId        int64           `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;index:ix_user_id"`
+	PlatformId    int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;index:ix_plat_user"`
+	UserId        int64           `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;index:ix_plat_user"`
 	OperationTime time.Time       `json:"operation_time" gorm:"column:operation_time;comment:操作时间"`
 	Remark        string          `json:"remark" gorm:"type:text;column:remark;comment:备注"`
 	Db            func() *gorm.DB `json:"-" gorm:"-"`

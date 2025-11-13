@@ -46,8 +46,9 @@ func GetPayTypeName(payType string) string {
 // DimRootGameModel 主游戏维度
 type DimPayChannelModel struct {
 	sql2.SqlBaseModel
-	ChannelName string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:渠道名称"`
-	CompanyId   int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
+	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_company_name"`
+	CompanyId   int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID;uniqueIndex:ix_plat_company_name"`
+	ChannelName string          `json:"channel_name" gorm:"size:100;column:channel_name;default:'';comment:渠道名称;uniqueIndex:ix_plat_company_name"`
 	PayType     string          `json:"pay_type" gorm:"size:50;column:pay_type;default:'';comment:支付类型"`
 	Status      string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
 	Rate        int             `json:"rate" gorm:"column:rate;default:0;comment:费率，如5为5%"`

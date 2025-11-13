@@ -9,8 +9,9 @@ import (
 
 type OdsLoginLogModel struct {
 	sql.SqlBaseModel
-	UserId    int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID"`
-	LoginTime time.Time `json:"login_time" gorm:"type:datetime(0);column:login_time;comment:登录时间"`
+	PlatformId int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID"`
+	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID"`
+	LoginTime  time.Time `json:"login_time" gorm:"type:datetime(0);column:login_time;comment:登录时间"`
 	sql.SqlCommonModel
 	Db func() *gorm.DB `json:"-" gorm:"-"`
 }
