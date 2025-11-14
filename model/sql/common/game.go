@@ -80,8 +80,8 @@ func GetCooperationModelName(req string) string {
 // DimGameModel 游戏维度
 type DimGameModel struct {
 	sql2.SqlBaseModel
-	PlatformId       int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID"`
-	GameName         string          `json:"game_name" gorm:"size:100;column:game_name;default:'';comment:游戏名称"`
+	PlatformId       int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	GameName         string          `json:"game_name" gorm:"size:100;column:game_name;default:'';comment:游戏名称;uniqueIndex:ix_plat_name"`
 	PackageName      string          `json:"package_name" gorm:"size:150;column:package_name;default:'';comment:包名"`
 	AppId            string          `json:"app_id" gorm:"size:100;column:app_id;default:'';comment:应用ID"`
 	AppName          string          `json:"app_name" gorm:"size:100;column:app_name;default:'';comment:应用名称"`
