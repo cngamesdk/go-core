@@ -163,6 +163,7 @@ func (receiver *OdsUserInfoLogModel) SaveUserOperationLog(ctx context.Context) (
 		userLogModel.Db = func() *gorm.DB {
 			return receiver.Db()
 		}
+		userLogModel.PlatformId = receiver.PlatformId
 		userLogModel.UserId = receiver.Id
 		userLogModel.OperationTime = time.Now()
 		userLogModel.Remark = strings.Join(remarks, ",")
