@@ -93,6 +93,7 @@ type DimGameModel struct {
 	CompanyId        int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
 	Status           string          `json:"status" gorm:"size:50;column:status;default:'';comment:游戏状态"`
 	CooperationModel string          `json:"cooperation_model" gorm:"size:50;column:cooperation_model;default:'';comment:合作方式"`
+	CpGameId         int64           `json:"cp_game_id" gorm:"column:cp_game_id;default:0;comment:研发对接游戏ID"`
 	Db               func() *gorm.DB `json:"-" gorm:"-"`
 }
 
