@@ -87,7 +87,7 @@ type DimGameModel struct {
 	AppName          string          `json:"app_name" gorm:"size:100;column:app_name;default:'';comment:应用名称"`
 	GameType         string          `json:"game_type" gorm:"size:50;column:game_type;default:'';comment:游戏类型"`
 	Os               string          `json:"os" gorm:"size:50;column:os;default:'';comment:操作系统"`
-	MainId           int64           `json:"main_id" gorm:"column:main_id;default:0;comment:主游戏ID"`
+	MainGameId       int64           `json:"main_game_id" gorm:"column:main_game_id;default:0;comment:主游戏ID"`
 	GameCoinName     string          `json:"game_coin_name" gorm:"column:game_coin_name;default:'';comment:游戏币名称"`
 	GameRate         int             `json:"game_rate" gorm:"column:game_rate;default:0;comment:游戏币兑换比例"`
 	CompanyId        int64           `json:"company_id" gorm:"column:company_id;default:0;comment:主体ID"`
