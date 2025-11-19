@@ -14,7 +14,7 @@ type DimPublishingChannelGameConfigModel struct {
 	ChannelId  int64           `json:"channel_id" gorm:"column:channel_id;default:0;comment:发行渠道ID;uniqueIndex:ix_plat_game_channel_site"`
 	AgentId    int64           `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
 	SiteId     int64           `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID;uniqueIndex:ix_plat_game_channel_site"`
-	Config     sql.JSON        `json:"config" gorm:"column:config;default:'{}';comment:json配置"`
+	Config     sql.JSON        `json:"config" gorm:"type:json;column:config;comment:json配置"`
 	Db         func() *gorm.DB `json:"-" gorm:"-"`
 }
 

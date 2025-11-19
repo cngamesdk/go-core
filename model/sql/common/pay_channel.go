@@ -52,7 +52,7 @@ type DimPayChannelModel struct {
 	PayType     string          `json:"pay_type" gorm:"size:50;column:pay_type;default:'';comment:支付类型"`
 	Status      string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
 	Rate        int             `json:"rate" gorm:"column:rate;default:0;comment:费率，如5为5%"`
-	Config      sql2.JSON       `json:"config" gorm:"column:config;default:'{}';comment:配置"`
+	Config      sql2.JSON       `json:"config" gorm:"type:json;column:config;comment:配置"`
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 
