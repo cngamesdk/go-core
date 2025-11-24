@@ -6,7 +6,7 @@
 go get github.com/cngamesdk/go-core
 ```
 
-###目录
+### 目录
 
 - config 配置文件模型，如常见模型、Sql、Redis、Log模型等
 - cryptor 加解密相关
