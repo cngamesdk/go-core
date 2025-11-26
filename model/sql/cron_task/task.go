@@ -9,13 +9,13 @@ import (
 // DimCronTaskConfigModel 定时任务配置维度表
 type DimCronTaskConfigModel struct {
 	sql2.SqlBaseModel
-	Name    string          `json:"name" gorm:"size:100;column:name;default:'';comment:任务名称;uniqueIndex:ix_name"`
-	Spec    string          `json:"spec" gorm:"size:150;column:spec;default:'';comment:任务执行规则;"`
-	Remark  string          `json:"remark" gorm:"size:512;column:remark;default:'';comment:备注;"`
-	Status  string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
-	Content string          `json:"content" gorm:"type:longtext;column:content;comment:内容;"`
-	Config  sql2.JSON       `json:"config" gorm:"type:json;column:config;comment:配置;"`
-	Db      func() *gorm.DB `json:"-" gorm:"-"`
+	Name    string             `json:"name" gorm:"size:100;column:name;default:'';comment:任务名称;uniqueIndex:ix_name"`
+	Spec    string             `json:"spec" gorm:"size:150;column:spec;default:'';comment:任务执行规则;"`
+	Remark  string             `json:"remark" gorm:"size:512;column:remark;default:'';comment:备注;"`
+	Status  string             `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
+	Content string             `json:"content" gorm:"type:longtext;column:content;comment:内容;"`
+	Config  sql2.CustomMapType `json:"config" gorm:"type:json;column:config;comment:配置;"`
+	Db      func() *gorm.DB    `json:"-" gorm:"-"`
 }
 
 func (receiver *DimCronTaskConfigModel) TableName() string {
