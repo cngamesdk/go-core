@@ -14,7 +14,7 @@ type DimCronTaskConfigModel struct {
 	Spec   string          `json:"spec" gorm:"size:150;column:spec;default:'';comment:任务执行规则;"`
 	Remark string          `json:"remark" gorm:"size:512;column:remark;default:'';comment:备注;"`
 	Status string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
-	Config sql2.JSON       `json:"config" gorm:"size:json;column:config;comment:配置;"`
+	Config sql2.JSON       `json:"config" gorm:"type:json;column:config;comment:配置;"`
 	Db     func() *gorm.DB `json:"-" gorm:"-"`
 }
 
