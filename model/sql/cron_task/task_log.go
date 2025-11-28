@@ -10,13 +10,14 @@ import (
 // OdsCronTaskLogModel 定时任务日志表
 type OdsCronTaskLogModel struct {
 	sql2.SqlBaseModel
-	ConfigId  int64           `json:"config_id" gorm:"column:config_id;default:0;comment:任务Id;index:ix_config_id"`
-	StartTime time.Time       `json:"start_time" gorm:"type:datetime(0);column:start_time;comment:开始时间;"`
-	EndTime   time.Time       `json:"end_time" gorm:"type:datetime(0);column:end_time;comment:结束时间;"`
-	Latency   int             `json:"latency" gorm:"size:11;column:latency;default:0;comment:延迟,单位：秒;"`
-	Status    string          `json:"status" gorm:"size:50;column:status;comment:状态;"`
-	Result    string          `json:"result" gorm:"type:text;column:result;comment:执行结果;"`
-	Db        func() *gorm.DB `json:"-" gorm:"-"`
+	ConfigId     int64           `json:"config_id" gorm:"column:config_id;default:0;comment:任务Id;index:ix_config_id"`
+	StartTime    time.Time       `json:"start_time" gorm:"type:datetime(0);column:start_time;comment:开始时间;"`
+	EndTime      time.Time       `json:"end_time" gorm:"type:datetime(0);column:end_time;comment:结束时间;"`
+	Latency      int             `json:"latency" gorm:"size:32;column:latency;default:0;comment:延迟,单位：秒;"`
+	Status       string          `json:"status" gorm:"size:50;column:status;comment:状态;"`
+	Result       string          `json:"result" gorm:"type:text;column:result;comment:执行结果;"`
+	RowsAffected int             `json:"rows_affected" gorm:"size:32;column:rows_affected;default:0;comment:影响行数;"`
+	Db           func() *gorm.DB `json:"-" gorm:"-"`
 }
 
 func (receiver *OdsCronTaskLogModel) TableName() string {
