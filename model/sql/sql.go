@@ -79,7 +79,7 @@ func (args *CustomMapType) Scan(value interface{}) error {
 }
 
 // Value Valuer
-func (args *CustomMapType) Value() (driver.Value, error) {
+func (args CustomMapType) Value() (driver.Value, error) {
 	return value(args)
 }
 
