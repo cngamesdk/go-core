@@ -55,6 +55,7 @@ type DimCronTaskConfigModel struct {
 	Config        sql2.CustomMapType `json:"config" gorm:"type:json;column:config;comment:配置;"`
 	Sort          int                `json:"sort" gorm:"size:32;column:sort;default:0;comment:排序,降序;"`
 	ParentId      int64              `json:"parent_id" gorm:"column:parent_id;default:0;comment:父节点ID;"`
+	ChildrenNum   int                `json:"children_num" gorm:"size:32;column:children_num;default:0;comment:孩子节点数量;"`
 	TaskType      string             `json:"task_type" gorm:"size:50;column:task_type;default:'';comment:任务类型;"`
 	ExecutionMode string             `json:"execution_mode" gorm:"size:50;column:execution_mode;default:'';comment:执行模式;"`
 	Db            func() *gorm.DB    `json:"-" gorm:"-"`
