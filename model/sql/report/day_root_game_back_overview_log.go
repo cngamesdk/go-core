@@ -24,7 +24,6 @@ type DwsDayRootGameBackOverviewLogModel struct {
 	Login            int             `json:"login" gorm:"column:login;default:0;comment:登录数;"`
 	LoginUser        int             `json:"login_user" gorm:"column:login_user;default:0;comment:登录用户数;"`
 	LoginDevice      int             `json:"login_device" gorm:"column:login_device;default:0;comment:登录设备数;"`
-	LoginSum         int             `json:"login_sum" gorm:"column:login_sum;default:0;comment:登录次数;"`
 	Role             int             `json:"role" gorm:"column:role;default:0;comment:创角数;"`
 	RoleUser         int             `json:"role_user" gorm:"column:role_user;default:0;comment:创角用户数;"`
 	RoleDevice       int             `json:"role_device" gorm:"column:role_device;default:0;comment:创角设备数;"`
