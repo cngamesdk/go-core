@@ -5,18 +5,20 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/duke-git/lancet/v2/cryptor"
 	"reflect"
+	"strings"
 	"time"
 )
 
 const (
-	StatusNormal    = "normal"
-	StatusDelete    = "delete"
-	StatusForbidden = "forbidden"
-	StatusRemove    = "remove"  // 下架
-	StatusClaimed   = "claimed" // 已领取
-	StatusSuccess   = "success" // 成功
-	StatusFail      = "fail"    // 失败
+	StatusNormal    = "normal"    // 正常
+	StatusDelete    = "delete"    // 删除
+	StatusForbidden = "forbidden" // 禁止
+	StatusRemove    = "remove"    // 下架
+	StatusClaimed   = "claimed"   // 已领取
+	StatusSuccess   = "success"   // 成功
+	StatusFail      = "fail"      // 失败
 )
 
 type SqlBaseModel struct {
@@ -45,6 +47,16 @@ type SqlCommonModel struct {
 	Model          string `json:"model" gorm:"size:50;column:model;default:'';comment:机型"`
 	Brand          string `json:"brand" gorm:"size:50;column:brand;default:'';comment:品牌"`
 	UserAgent      string `json:"user_agent" gorm:"size:1024;column:user_agent;default:'';comment:用户UA"`
+	UniqueDevice   string `json:"unique_device" gorm:"size:32;column:unique_device;default:'';comment:唯一设备"`
+}
+
+func (receiver *SqlCommonModel) FormatUniqueDevice() {
+	var deviceContainer []string
+	deviceContainer = append(deviceContainer, "imei="+receiver.Imei)
+	deviceContainer = append(deviceContainer, "idfv="+receiver.Idfv)
+	deviceContainer = append(deviceContainer, "oaid="+receiver.Oaid)
+	receiver.UniqueDevice = cryptor.Md5String(strings.Join(deviceContainer, "&"))
+	return
 }
 
 type JSON json.RawMessage
