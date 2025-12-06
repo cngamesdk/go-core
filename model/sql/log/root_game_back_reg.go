@@ -15,6 +15,7 @@ type DwdRootGameBackRegLogModel struct {
 	UserId     int64     `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_plat_game_user_time"`
 	RegTime    time.Time `json:"reg_time" gorm:"type:datetime(0);column:reg_time;comment:注册时间;uniqueIndex:ix_plat_game_user_time"`
 	LastTime   time.Time `json:"last_time" gorm:"type:datetime(0);column:last_time;comment:最后时间:最后登录时间+30天;"`
+	Ad3Id      int64     `json:"ad3_id" gorm:"column:ad3_id;default:0;comment:广告三级ID"`
 	sql.SqlCommonModel
 	Db func() *gorm.DB `json:"-" gorm:"-"`
 }
