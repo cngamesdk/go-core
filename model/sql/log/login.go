@@ -29,3 +29,22 @@ func (receiver *OdsLoginLogModel) Create(ctx context.Context) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
 	return
 }
+
+func (receiver *OdsLoginLogModel) BeforeCreate(tx *gorm.DB) (err error) {
+	return receiver.beforeCreateOrUpdateHook(tx)
+}
+
+func (receiver *OdsLoginLogModel) BeforeSave(tx *gorm.DB) (err error) {
+	return
+}
+
+func (receiver *OdsLoginLogModel) BeforeUpdate(tx *gorm.DB) (err error) {
+	return
+}
+
+func (receiver *OdsLoginLogModel) beforeCreateOrUpdateHook(tx *gorm.DB) (err error) {
+	if receiver.UniqueDevice == "" {
+		receiver.SqlCommonModel.FormatUniqueDevice()
+	}
+	return
+}
