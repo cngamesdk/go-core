@@ -29,3 +29,22 @@ func (receiver *OdsRegLogModel) Create(ctx context.Context) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
 	return
 }
+
+func (receiver *OdsRegLogModel) BeforeCreate(tx *gorm.DB) (err error) {
+	return receiver.beforeCreateOrUpdateHook(tx)
+}
+
+func (receiver *OdsRegLogModel) BeforeSave(tx *gorm.DB) (err error) {
+	return
+}
+
+func (receiver *OdsRegLogModel) BeforeUpdate(tx *gorm.DB) (err error) {
+	return
+}
+
+func (receiver *OdsRegLogModel) beforeCreateOrUpdateHook(tx *gorm.DB) (err error) {
+	if receiver.UniqueDevice == "" {
+		receiver.SqlCommonModel.FormatUniqueDevice()
+	}
+	return
+}
