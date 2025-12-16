@@ -17,12 +17,12 @@ type DwdRootGameBackRegLogModel struct {
 	LastTime            time.Time `json:"last_time" gorm:"type:datetime(0);column:last_time;comment:最后时间:最后登录时间+30天;"`
 	Ad3Id               int64     `json:"ad3_id" gorm:"column:ad3_id;default:0;comment:广告三级ID"`
 	FirstDayPayTime     time.Time `json:"first_day_pay_time" gorm:"type:datetime(0);column:first_day_pay_time;comment:首日付费时间;"`
-	FirstDayPayCount    int       `json:"first_day_pay_count" gorm:"type:32;column:first_day_pay_count;comment:首日付费次数;"`
-	FirstDayPayAmount   int       `json:"first_day_pay_amount" gorm:"type:32;column:first_day_pay_amount;comment:首日付费金额,单位:分;"`
+	FirstDayPayCount    int       `json:"first_day_pay_count" gorm:"size:32;column:first_day_pay_count;comment:首日付费次数;"`
+	FirstDayPayAmount   int       `json:"first_day_pay_amount" gorm:"size:32;column:first_day_pay_amount;comment:首日付费金额,单位:分;"`
 	FirstPayTime        time.Time `json:"first_pay_time" gorm:"type:datetime(0);column:first_pay_time;comment:首次付费时间;"`
-	FirstPayAmount      int       `json:"first_pay_amount" gorm:"type:32;column:first_pay_amount;comment:首次付费金额,单位:分;"`
-	CumulativePayCount  int       `json:"cumulative_pay_count" gorm:"type:32;column:cumulative_pay_count;comment:累计付费次数;"`
-	CumulativePayAmount int       `json:"cumulative_pay_amount" gorm:"type:32;column:cumulative_pay_amount;comment:累计付费金额,单位:分;"`
+	FirstPayAmount      int       `json:"first_pay_amount" gorm:"size:32;column:first_pay_amount;comment:首次付费金额,单位:分;"`
+	CumulativePayCount  int       `json:"cumulative_pay_count" gorm:"size:32;column:cumulative_pay_count;comment:累计付费次数;"`
+	CumulativePayAmount int       `json:"cumulative_pay_amount" gorm:"size:32;column:cumulative_pay_amount;comment:累计付费金额,单位:分;"`
 	LastLoginTime       time.Time `json:"last_login_time" gorm:"type:datetime(0);column:last_login_time;comment:最后登录时间;"`
 	sql.SqlCommonModel
 	Db func() *gorm.DB `json:"-" gorm:"-"`
