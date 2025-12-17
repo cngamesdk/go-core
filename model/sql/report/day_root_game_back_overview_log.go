@@ -15,22 +15,22 @@ type DwsDayRootGameBackOverviewLogModel struct {
 	AgentId          int64           `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID;uniqueIndex:ix_unique"`
 	SiteId           int64           `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID;uniqueIndex:ix_unique"`
 	Ad3Id            int64           `json:"ad3_id" gorm:"column:ad3_id;default:0;comment:广告三级ID;uniqueIndex:ix_unique"`
-	Activation       int             `json:"activation" gorm:"column:activation;default:0;comment:激活数;"`
-	ActivationDevice int             `json:"activation_device" gorm:"column:activation_device;default:0;comment:激活设备数;"`
-	Launch           int             `json:"launch" gorm:"column:launch;default:0;comment:启动数;"`
-	LaunchDevice     int             `json:"launch_device" gorm:"column:launch_device;default:0;comment:启动设备数;"`
-	Reg              int             `json:"reg" gorm:"column:reg;default:0;comment:注册数;"`
-	RegDevice        int             `json:"reg_device" gorm:"column:reg_device;default:0;comment:注册设备数;"`
-	Login            int             `json:"login" gorm:"column:login;default:0;comment:登录数;"`
-	LoginUser        int             `json:"login_user" gorm:"column:login_user;default:0;comment:登录用户数;"`
-	LoginDevice      int             `json:"login_device" gorm:"column:login_device;default:0;comment:登录设备数;"`
-	Role             int             `json:"role" gorm:"column:role;default:0;comment:创角数;"`
-	RoleUser         int             `json:"role_user" gorm:"column:role_user;default:0;comment:创角用户数;"`
-	RoleDevice       int             `json:"role_device" gorm:"column:role_device;default:0;comment:创角设备数;"`
-	Pay              int             `json:"pay" gorm:"column:pay;default:0;comment:付费数;"`
-	PayUser          int             `json:"pay_user" gorm:"column:pay_user;default:0;comment:付费用户数;"`
-	PayDevice        int             `json:"pay_device" gorm:"column:pay_device;default:0;comment:付费设备数;"`
-	PayMoney         int             `json:"pay_money" gorm:"column:pay_money;default:0;comment:付费金额;"`
+	Activation       int             `json:"activation" gorm:"size:32;column:activation;default:0;comment:激活数;"`
+	ActivationDevice int             `json:"activation_device" gorm:"size:32;column:activation_device;default:0;comment:激活设备数;"`
+	Launch           int             `json:"launch" gorm:"size:32;column:launch;default:0;comment:启动数;"`
+	LaunchDevice     int             `json:"launch_device" gorm:"size:32;column:launch_device;default:0;comment:启动设备数;"`
+	Reg              int             `json:"reg" gorm:"size:32;column:reg;default:0;comment:注册数;"`
+	RegDevice        int             `json:"reg_device" gorm:"size:32;column:reg_device;default:0;comment:注册设备数;"`
+	Login            int             `json:"login" gorm:"size:32;column:login;default:0;comment:登录数;"`
+	LoginUser        int             `json:"login_user" gorm:"size:32;column:login_user;default:0;comment:登录用户数;"`
+	LoginDevice      int             `json:"login_device" gorm:"size:32;column:login_device;default:0;comment:登录设备数;"`
+	Role             int             `json:"role" gorm:"size:32;column:role;default:0;comment:创角数;"`
+	RoleUser         int             `json:"role_user" gorm:"size:32;column:role_user;default:0;comment:创角用户数;"`
+	RoleDevice       int             `json:"role_device" gorm:"size:32;column:role_device;default:0;comment:创角设备数;"`
+	Pay              int             `json:"pay" gorm:"size:32;column:pay;default:0;comment:付费数;"`
+	PayUser          int             `json:"pay_user" gorm:"size:32;column:pay_user;default:0;comment:付费用户数;"`
+	PayDevice        int             `json:"pay_device" gorm:"size:32;column:pay_device;default:0;comment:付费设备数;"`
+	PayMoney         int             `json:"pay_money" gorm:"size:32;column:pay_money;default:0;comment:付费金额;"`
 	Db               func() *gorm.DB `json:"-" gorm:"-"`
 }
 
