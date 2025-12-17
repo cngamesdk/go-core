@@ -16,8 +16,8 @@ type DwsDayRootGameBackLoginActiveLogModel struct {
 	SiteId      int64           `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID;uniqueIndex:ix_unique"`
 	Ad3Id       int64           `json:"ad3_id" gorm:"column:ad3_id;default:0;comment:广告三级ID;uniqueIndex:ix_unique"`
 	RegDate     string          `json:"reg_date" gorm:"type:date;column:reg_date;comment:注册日期;uniqueIndex:ix_unique"`
-	ActiveDays  uint            `json:"active_days" gorm:"column:active_days;default:0;comment:活跃天数;"`
-	ActiveCount uint            `json:"active_count" gorm:"column:active_count;default:0;comment:活跃人数;"`
+	ActiveDays  uint            `json:"active_days" gorm:"size:32;column:active_days;default:0;comment:活跃天数;"`
+	ActiveCount uint            `json:"active_count" gorm:"size:32;column:active_count;default:0;comment:活跃人数;"`
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 
