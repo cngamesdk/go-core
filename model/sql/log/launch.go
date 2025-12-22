@@ -35,3 +35,14 @@ func (receiver *OdsLaunchLogModel) Create(ctx context.Context) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
 	return
 }
+
+func (receiver *OdsLaunchLogModel) BeforeCreate(tx *gorm.DB) (err error) {
+	return receiver.beforeCreateHook(tx)
+}
+
+func (receiver *OdsLaunchLogModel) beforeCreateHook(tx *gorm.DB) (err error) {
+	if receiver.UniqueDevice == "" {
+		receiver.SqlCommonModel.FormatUniqueDevice()
+	}
+	return
+}
