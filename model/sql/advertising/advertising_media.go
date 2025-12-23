@@ -8,11 +8,12 @@ import (
 
 // 常见媒体
 const (
+	CommonMediaOfficial    = "official"    // 官方
 	CommonMediaTencent     = "tencent"     // 腾讯广告
 	CommonMediaOceanengine = "oceanengine" // 巨量引擎
 	CommonMediaKuaishou    = "kuaishou"    // 快手磁力引擎
 	CommonMediaBaidu       = "baidu"       // 百度广告
-	CommonMediaUc          = "uc"          // uc广告
+	CommonMediaUc          = "uc"          // UC广告
 	CommonMediaTaptap      = "taptap"      // TAPTAP广告
 	CommonMediaZhihu       = "zhihu"       // 知乎广告
 	CommonMediaBilibili    = "bilibili"    // 哔哩哔哩广告
@@ -21,6 +22,7 @@ const (
 
 var (
 	CommonMediasMap = map[string]string{
+		CommonMediaOfficial:    "官方",
 		CommonMediaTencent:     "腾讯广告",
 		CommonMediaOceanengine: "巨量引擎",
 		CommonMediaKuaishou:    "快手磁力引擎",
