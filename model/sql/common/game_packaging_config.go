@@ -6,6 +6,11 @@ import (
 	"gorm.io/gorm"
 )
 
+const (
+	UseStatusNormal = sql2.StatusNormal
+	UseStatusRemove = sql2.StatusRemove
+)
+
 type DimGamePackagingConfigModel struct {
 	sql2.SqlBaseModel
 	Db              func() *gorm.DB `json:"-" gorm:"-"`
@@ -15,7 +20,7 @@ type DimGamePackagingConfigModel struct {
 	GamePackagePath string          `json:"game_package_path" gorm:"size:512;column:game_package_path;default:'';comment:游戏包路径"`
 	GamePackageHash string          `json:"game_package_hash" gorm:"size:100;column:game_package_hash;default:'';comment:游戏包hash摘要"`
 	Status          string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
-	InUse           int             `json:"in_use" gorm:"size:4;column:in_use;default:0;comment:是否使用"`
+	UseStatus       string          `json:"use_status" gorm:"size:50;column:use_status;default:'';comment:使用状态"`
 }
 
 func (receiver *DimGamePackagingConfigModel) TableName() string {
