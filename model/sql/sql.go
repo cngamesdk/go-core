@@ -20,7 +20,7 @@ const (
 	StatusSuccess    = "success"     // 成功
 	StatusFail       = "fail"        // 失败
 	StatusNotStarted = "not-started" // 未开始
-	StatusProcessing = "Processing"  // 处理中
+	StatusProcessing = "processing"  // 处理中
 )
 
 type SqlBaseModel struct {
