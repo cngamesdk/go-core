@@ -50,6 +50,6 @@ func (receiver *DimAdvertisingMediaAccountModel) Create(ctx context.Context) (er
 }
 
 func (receiver *DimAdvertisingMediaAccountModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
-	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args).Updates(receiver).Error
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args...).Updates(receiver).Error
 	return
 }

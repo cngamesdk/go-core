@@ -30,6 +30,6 @@ func (receiver *DimProductCommonConfigurationModel) Create(ctx context.Context) 
 }
 
 func (receiver *DimProductCommonConfigurationModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
-	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args).Updates(receiver).Error
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args...).Updates(receiver).Error
 	return
 }

@@ -28,6 +28,6 @@ func (receiver *DimPlatformModel) Create(ctx context.Context) (err error) {
 }
 
 func (receiver *DimPlatformModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
-	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args).Updates(receiver).Error
+	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args...).Updates(receiver).Error
 	return
 }
