@@ -14,6 +14,7 @@ type OdsGamePackagingLogModel struct {
 	AgentId         int64           `json:"agent_id" gorm:"column:agent_id;default:0;comment:渠道ID"`
 	SiteId          int64           `json:"site_id" gorm:"column:site_id;default:0;comment:广告位ID;index:ix_site"`
 	Status          string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
+	Sort            int             `json:"sort" gorm:"size:32;column:sort;default:0;comment:排序,降序"`
 	GamePackagePath string          `json:"game_package_path" gorm:"size:512;column:game_package_path;default:'';comment:游戏包路径"`
 	ExecCmd         string          `json:"exec_cmd" gorm:"size:512;column:exec_cmd;default:'';comment:执行的命令"`
 	ExecCmdResult   string          `json:"exec_cmd_result" gorm:"type:text;column:exec_cmd_result;comment:执行的命令的结果"`
