@@ -11,6 +11,7 @@ type DimGlobalCommonConfigModel struct {
 	Db                    func() *gorm.DB `json:"-" gorm:"-"`
 	PlatformId            int             `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat"`
 	GamePackagingToolPath string          `json:"game_packaging_tool_path" gorm:"size:512;column:game_packaging_tool_path;default:'';comment:游戏打包工具路径"`
+	JavaExecutionPath     string          `json:"java_execution_path" gorm:"size:512;column:java_execution_path;default:'';comment:java执行路径"`
 }
 
 func (receiver *DimGlobalCommonConfigModel) TableName() string {
