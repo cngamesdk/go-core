@@ -10,11 +10,14 @@ import (
 type DimPayChannelSwitchModel struct {
 	sql2.SqlBaseModel
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
-	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_company_name"`
-	PayType     string          `json:"pay_type" gorm:"size:50;column:pay_type;default:'';comment:支付类型"`
+	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;index:ix_plat_type"`
+	PayType     string          `json:"pay_type" gorm:"size:50;column:pay_type;default:'';comment:支付类型;index:ix_plat_type"`
 	Sort        int             `json:"sort" gorm:"size:32;column:sort;default:0;comment:排序，降序"`
+	RuleName    string          `json:"rule_name" gorm:"size:50;column:rule_name;default:'';comment:规则名称"`
+	RuleKey     string          `json:"rule_key" gorm:"size:150;column:rule_key;default:'';comment:规则键"`
 	Rules       Rules           `json:"rules" gorm:"type:json;column:rules;comment:规则"`
 	PayChannels PayChannels     `json:"pay_channels" gorm:"type:json;column:pay_channels;comment:支付渠道"`
+	Status      string          `json:"status" gorm:"size:50;column:status;default:'';comment:状态"`
 }
 
 func (receiver *DimPayChannelSwitchModel) TableName() string {
