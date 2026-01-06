@@ -89,16 +89,16 @@ type CustomMapType map[string]interface{}
 
 // Scan Scanner
 func (args *CustomMapType) Scan(value interface{}) error {
-	return scan(args, value)
+	return JsonScan(args, value)
 }
 
 // Value Valuer
 func (args CustomMapType) Value() (driver.Value, error) {
-	return value(args)
+	return JsonValue(args)
 }
 
-// scan for scanner helper
-func scan(data interface{}, value interface{}) error {
+// JsonScan for scanner helper
+func JsonScan(data interface{}, value interface{}) error {
 	if value == nil {
 		return nil
 	}
@@ -113,8 +113,8 @@ func scan(data interface{}, value interface{}) error {
 	}
 }
 
-// for valuer helper
-func value(data interface{}) (interface{}, error) {
+// JsonValue for valuer helper
+func JsonValue(data interface{}) (interface{}, error) {
 	vi := reflect.ValueOf(data)
 	// 判断是否为 0 值
 	if vi.IsZero() {
