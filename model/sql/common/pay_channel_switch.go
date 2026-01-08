@@ -62,7 +62,7 @@ func (args PayChannels) Value() (driver.Value, error) {
 }
 
 type DimPayChannelSwitchRule struct {
-	Name     string        `json:"name"`     // 维度或者指标
+	Key      string        `json:"key"`      // 筛选键值
 	Operator string        `json:"operator"` // 操作符
 	Value    []interface{} `json:"value"`    // 值
 }
