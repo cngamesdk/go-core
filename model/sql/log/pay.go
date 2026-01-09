@@ -38,7 +38,7 @@ type OdsPayLogModel struct {
 	CpResult          string    `json:"cp_result" gorm:"type:text;column:cp_result;comment:cp发货结果"`
 	CpSendTime        time.Time `json:"cp_send_time" gorm:"type:datetime(0);column:cp_send_time;comment:cp发货时间"`
 	CpSendRepeatTimes int       `json:"cp_send_repeat_times" gorm:"column:cp_send_repeat_times;default:0;comment:cp发货重试次数"`
-	PayChannelId      int       `json:"pay_channel_id" gorm:"column:pay_channel_id;default:0;comment:支付渠道ID"`
+	PayChannelId      int64     `json:"pay_channel_id" gorm:"column:pay_channel_id;default:0;comment:支付渠道ID"`
 	TestOrder         int       `json:"test_order" gorm:"size:6;column:test_order;default:0;comment:测试订单"`
 	sql.SqlCommonModel
 	Db func() *gorm.DB `json:"-" gorm:"-"`
