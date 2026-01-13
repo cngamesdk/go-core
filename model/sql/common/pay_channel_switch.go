@@ -67,7 +67,13 @@ type DimPayChannelSwitchRule struct {
 	Value    []interface{} `json:"value"`    // 值
 }
 
+const (
+	PayChannelSwitchModeActive  = "active"  // 主
+	PayChannelSwitchModeStandby = "standby" // 备
+)
+
 type DimPayChannelSwitchPayChannel struct {
-	PayChannelId int64 `json:"pay_channel_id"` // 充值渠道ID
-	Weight       int   `json:"weight"`         // 权重
+	PayChannelId int64  `json:"pay_channel_id"` // 充值渠道ID
+	Weight       int    `json:"weight"`         // 权重
+	Mode         string `json:"mode"`           // 主/备
 }
