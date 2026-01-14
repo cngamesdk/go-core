@@ -12,7 +12,7 @@ type DwdDayGameRegUidLoginLogModel struct {
 	sql.SqlCommonModel
 	GameId         int64                `json:"game_id" gorm:"column:game_id;default:0;comment:游戏ID;uniqueIndex:ix_plat_game_user_date"`
 	UserId         int64                `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_plat_game_user_date"`
-	LoginDate      string               `json:"login_date" gorm:"type:date;column:login_date;default:'';comment:登录日期;uniqueIndex:ix_plat_game_user_date"`
+	LoginDate      string               `json:"login_date" gorm:"type:date;column:login_date;default:'1970-01-01';comment:登录日期;uniqueIndex:ix_plat_game_user_date"`
 	FirstLoginTime sql.MyCustomDatetime `json:"first_login_time" gorm:"type:datetime;column:first_login_time;default:'';comment:首次登录时间;"`
 	LastLoginTime  sql.MyCustomDatetime `json:"last_login_time" gorm:"type:datetime;column:last_login_time;default:'';comment:最后登录时间;"`
 	LoginCount     int                  `json:"login_count" gorm:"size:32;column:login_count;default:0;comment:登录次数;"`
