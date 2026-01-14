@@ -10,7 +10,7 @@ import (
 type DwdDayGameRegUidLoginLogModel struct {
 	sql.SqlBaseModel
 	sql.SqlCommonModel
-	PlatformId     int64                `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_user"`
+	PlatformId     int64                `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_user_date"`
 	GameId         int64                `json:"game_id" gorm:"column:game_id;default:0;comment:游戏ID;uniqueIndex:ix_plat_game_user_date"`
 	UserId         int64                `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;uniqueIndex:ix_plat_game_user_date"`
 	LoginDate      string               `json:"login_date" gorm:"type:date;column:login_date;default:'1970-01-01';comment:登录日期;uniqueIndex:ix_plat_game_user_date"`
