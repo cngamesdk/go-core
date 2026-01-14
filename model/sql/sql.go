@@ -6,6 +6,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/duke-git/lancet/v2/cryptor"
+	"github.com/duke-git/lancet/v2/datetime"
+	"github.com/spf13/cast"
 	"reflect"
 	"strings"
 	"time"
@@ -121,4 +123,22 @@ func JsonValue(data interface{}) (interface{}, error) {
 		return nil, nil
 	}
 	return json.Marshal(data)
+}
+
+// MyCustomDatetime 自定义datetime类型
+type MyCustomDatetime time.Time
+
+// Scan Scanner
+func (args *MyCustomDatetime) Scan(src interface{}) error {
+	myTime, myErr := datetime.FormatStrToTime(cast.ToString(src), "yyyy-mm-dd hh:mm:ss", "Local")
+	if myErr != nil {
+		return myErr
+	}
+	*args = MyCustomDatetime(myTime)
+	return nil
+}
+
+// Value Valuer
+func (args MyCustomDatetime) Value() (driver.Value, error) {
+	return args, nil
 }
