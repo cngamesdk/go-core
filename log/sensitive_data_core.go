@@ -1,9 +1,7 @@
 package log
 
 import (
-	"encoding/base64"
 	"fmt"
-	"github.com/duke-git/lancet/v2/cryptor"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"regexp"
@@ -37,15 +35,13 @@ func NewMaskingPolicy() *MaskingPolicy {
 	}
 }
 
-func ReplaceStrSensitiveData(str string, aesKey []byte) string {
+func ReplaceStrSensitiveData(str string) string {
 	maskingPolicy := NewMaskingPolicy()
 	for key, regexpValue := range maskingPolicy.patterns {
 		newRegxp := fmt.Sprintf("\"%s\":\"%s\"", key, regexpValue.String())
 		findStrs := regexp.MustCompile(newRegxp).FindAllString(str, -1)
 		if len(findStrs) > 0 {
-			for _, item := range findStrs {
-				str = regexp.MustCompile(newRegxp).ReplaceAllString(str, fmt.Sprintf("\"%s\":\"%s\"", key, base64.RawStdEncoding.EncodeToString(cryptor.AesEcbEncrypt([]byte(item), aesKey))))
-			}
+			str = regexp.MustCompile(newRegxp).ReplaceAllString(str, fmt.Sprintf("\"%s\":\"%s\"", key, "***"))
 		}
 	}
 	return str
