@@ -32,7 +32,8 @@ var StatusMap = map[string]string{
 	StatusForbidden:  "禁止",
 	StatusRemove:     "下架",
 	StatusClaimed:    "已领取",
-	StatusFail:       "成功",
+	StatusSuccess:    "成功",
+	StatusFail:       "失败",
 	StatusNotStarted: "未开始",
 	StatusProcessing: "处理中",
 }
