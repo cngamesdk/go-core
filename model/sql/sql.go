@@ -25,6 +25,18 @@ const (
 	StatusProcessing = "processing"  // 处理中
 )
 
+// 状态映射
+var StatusMap = map[string]string{
+	StatusNormal:     "正常",
+	StatusDelete:     "删除",
+	StatusForbidden:  "禁止",
+	StatusRemove:     "下架",
+	StatusClaimed:    "已领取",
+	StatusFail:       "成功",
+	StatusNotStarted: "未开始",
+	StatusProcessing: "处理中",
+}
+
 type SqlBaseModel struct {
 	Id        int64     `json:"id" gorm:"primaryKey;autoIncrement"`
 	CreatedAt time.Time `json:"created_at" gorm:"type:datetime(0);column:created_at;autoCreateTime;default:CURRENT_TIMESTAMP;comment:创建时间"`                                            // 创建时间
