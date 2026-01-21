@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// DwdDayGameRegUidLoginLogModel 子注册
+// DwdDayGameRegUidLoginLogModel 子注册按天日志表
 type DwdDayGameRegUidLoginLogModel struct {
 	sql.SqlBaseModel
 	sql.SqlCommonModel
