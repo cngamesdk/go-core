@@ -17,7 +17,7 @@ type DwdDayRootGameReg30BackUidLoginLogModel struct {
 	FirstLoginTime sql.MyCustomDatetime `json:"first_login_time" gorm:"type:datetime;column:first_login_time;comment:首次登录时间;"`
 	LastLoginTime  sql.MyCustomDatetime `json:"last_login_time" gorm:"type:datetime;column:last_login_time;comment:最后登录时间;"`
 	LoginCount     int                  `json:"login_count" gorm:"size:32;column:login_count;default:0;comment:登录次数;"`
-	RegTime        sql.MyCustomDatetime `json:"reg_time" gorm:"type:datetime;column:reg_time;comment:按根注册时间;"`
+	RegTime        sql.MyCustomDatetime `json:"reg_time" gorm:"type:datetime;column:reg_time;comment:回流注册时间;"`
 	Db             func() *gorm.DB      `json:"-" gorm:"-"`
 }
 
