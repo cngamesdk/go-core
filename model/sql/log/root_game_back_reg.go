@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// DwdRootGameBackRegLogModel 按根游戏回流注册日志
+// DwdRootGameBackRegLogModel 30天按根游戏回流注册日志
 type DwdRootGameBackRegLogModel struct {
 	sql.SqlBaseModel
 	PlatformId          int64     `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_game_user_time"`
