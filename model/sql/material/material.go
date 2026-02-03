@@ -40,8 +40,8 @@ var (
 // OdsMaterialLog 素材日志表
 type OdsMaterialLog struct {
 	sql2.SqlBaseModel
-	PlatformId   int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name_pid"`
-	MaterialName string          `json:"material_name" gorm:"size:100;column:material_name;default:'';comment:素材名称;uniqueIndex:ix_plat_name_pid"`
+	PlatformId   int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;uniqueIndex:ix_plat_name"`
+	MaterialName string          `json:"material_name" gorm:"size:100;column:material_name;default:'';comment:素材名称;uniqueIndex:ix_plat_name"`
 	ThemeId      int64           `json:"theme_id" gorm:"column:theme_id;default:0;comment:题材ID;"`
 	Author       string          `json:"author" gorm:"size:50;column:author;default:'';comment:作者;"`
 	Source       string          `json:"source" gorm:"size:50;column:source;default:'';comment:来源;"`
