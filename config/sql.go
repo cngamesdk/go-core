@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"github.com/redis/go-redis/v9"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -16,12 +15,6 @@ type MySql struct {
 	Password     string `mapstructure:"password" json:"password" yaml:"password"`
 	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"max-idle-conns" yaml:"max-idle-conns"`
 	MaxOpenConns int    `mapstructure:"max-open-conns" json:"max-open-conns" yaml:"max-open-conns"`
-}
-
-type Redis struct {
-	Db       int    `mapstructure:"db" json:"db" yaml:"db"`
-	Addr     string `mapstructure:"addr" json:"addr" yaml:"addr"`
-	Password string `mapstructure:"password" json:"password" yaml:"password"`
 }
 
 // OpenMysql 打开Mysql链接
@@ -47,16 +40,5 @@ func OpenMysql(config MySql) (resp *gorm.DB, err error) {
 	sqlDb.SetMaxOpenConns(config.MaxOpenConns)
 	sqlDb.SetMaxIdleConns(config.MaxIdleConns)
 	resp = db
-	return
-}
-
-// OpenRedis 打开Redis链接
-func OpenRedis(config Redis) (resp *redis.Client, err error) {
-	rdb := redis.NewClient(&redis.Options{
-		Addr:     config.Addr,
-		Password: config.Password, // no password set
-		DB:       config.Db,       // use default DB
-	})
-	resp = rdb
 	return
 }
