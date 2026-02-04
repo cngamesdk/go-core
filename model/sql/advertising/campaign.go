@@ -49,9 +49,9 @@ type DimCampaignModel struct {
 	StartTime    sql2.MyCustomDatetime `json:"start_time" gorm:"type:datetime(0);column:start_time;comment:开始时间;index:idx_time_range;"`
 	EndTime      sql2.MyCustomDatetime `json:"end_time" gorm:"type:datetime(0);column:end_time;comment:结束时间;index:idx_time_range;"`
 	Status       string                `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
-	Targeting    string                `json:"targeting" gorm:"type:json;column:targeting;comment:定向设置;"`
-	Creative     string                `json:"creative" gorm:"type:json;column:creative;comment:创意内容;"`
-	Metrics      string                `json:"metrics" gorm:"type:json;column:metrics;comment:投放指标;"`
+	Targeting    Targeting             `json:"targeting" gorm:"type:json;column:targeting;comment:定向设置;"`
+	Creative     Creative              `json:"creative" gorm:"type:json;column:creative;comment:创意内容;"`
+	Metrics      Metrics               `json:"metrics" gorm:"type:json;column:metrics;comment:投放指标;"`
 	SyncStatus   string                `json:"sync_status" gorm:"size:50;column:sync_status;default:'';comment:同步状态;"`
 	LastSyncTime sql2.MyCustomDatetime `json:"last_sync_time" gorm:"type:datetime(0);column:last_sync_time;comment:最后同步时间;"`
 	CreatedBy    string                `json:"created_by" gorm:"size:50;column:created_by;default:'';comment:创建人;"`
