@@ -20,7 +20,7 @@ var (
 )
 
 // ods_material_file_log 素材文件日志表
-type OdsMaterialFileLog struct {
+type OdsMaterialFileLogModel struct {
 	sql2.SqlBaseModel
 	PlatformId int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;index:ix_plat_mid"`
 	MaterialId int64           `json:"material_id" gorm:"column:material_id;default:0;comment:素材ID;index:ix_plat_mid"`
@@ -39,21 +39,21 @@ type OdsMaterialFileLog struct {
 	Db         func() *gorm.DB `json:"-" gorm:"-"`
 }
 
-func (receiver *OdsMaterialFileLog) TableName() string {
+func (receiver *OdsMaterialFileLogModel) TableName() string {
 	return "ods_material_file_log"
 }
 
-func (receiver *OdsMaterialFileLog) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
+func (receiver *OdsMaterialFileLogModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Select(fields).Where(query, args...).Take(receiver).Error
 	return
 }
 
-func (receiver *OdsMaterialFileLog) Create(ctx context.Context) (err error) {
+func (receiver *OdsMaterialFileLogModel) Create(ctx context.Context) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
 	return
 }
 
-func (receiver *OdsMaterialFileLog) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
+func (receiver *OdsMaterialFileLogModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args...).Updates(receiver).Error
 	return
 }
