@@ -36,6 +36,7 @@ type OdsMaterialFileLogModel struct {
 	Duration   int             `json:"duration" gorm:"size:32;column:duration;default:0;comment:时长，单位：毫秒;"`
 	Bitrate    int             `json:"bitrate" gorm:"size:32;column:bitrate;default:0;comment:码率kbps;"`
 	Size       int             `json:"size" gorm:"size:32;column:size;default:0;comment:文件大小(bit);"`
+	Fps        int             `json:"fps" gorm:"size:32;column:fps;default:0;comment:fps;"`
 	Db         func() *gorm.DB `json:"-" gorm:"-"`
 }
 
