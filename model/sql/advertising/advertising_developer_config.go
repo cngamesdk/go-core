@@ -2,12 +2,14 @@ package advertising
 
 import (
 	"context"
+	sql2 "github.com/cngamesdk/go-core/model/sql"
 	"github.com/duke-git/lancet/v2/cryptor"
 	"gorm.io/gorm"
 )
 
 // DimAdvertisingDeveloperConfigModel 广告开发者配置
 type DimAdvertisingDeveloperConfigModel struct {
+	sql2.SqlBaseModel
 	Name        string          `json:"name" gorm:"size:50;column:name;default:'';comment:配置名称;"`
 	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
 	Code        string          `json:"code" gorm:"size:50;column:code;default:'';comment:媒体码;"`
