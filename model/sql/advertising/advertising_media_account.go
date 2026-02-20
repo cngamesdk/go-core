@@ -32,6 +32,8 @@ type DimAdvertisingMediaAccountModel struct {
 	AccountId   uint64          `json:"account_id" gorm:"size:100;column:account_id;default:0;comment:帐户ID;uniqueIndex:ix_plat_account"`
 	Status      string          `json:"status" gorm:"size:100;column:status;default:'';comment:状态"`
 	ManageId    int64           `json:"manage_id" gorm:"column:manage_id;default:0;comment:超管主键ID"`
+	Role        string          `json:"role" gorm:"column:role;default:'';comment:角色"`
+	Extension   string          `json:"extension" gorm:"type:json;column:extension;comment:扩展字段"`
 	Db          func() *gorm.DB `json:"-" gorm:"-"`
 }
 
