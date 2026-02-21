@@ -38,6 +38,7 @@ type DimAdvertisingMediaAccountModel struct {
 	RefreshToken          string                `json:"refresh_token" gorm:"size:512;column:refresh_token;default:'';comment:刷新令牌"`
 	ExpiresAt             sql2.MyCustomDatetime `json:"expires_at" gorm:"type:datetime(0);column:expires_at;comment:Access_Token过期时间"`
 	RefreshTokenExpiresAt sql2.MyCustomDatetime `json:"refresh_token_expires_at" gorm:"type:datetime(0);column:refresh_token_expires_at;comment:refresh_token过期时间"`
+	DeveloperId           int64                 `json:"developer_id" gorm:"column:developer_id;default:0;comment:开发者主键ID"`
 	Db                    func() *gorm.DB       `json:"-" gorm:"-"`
 }
 
