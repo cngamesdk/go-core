@@ -27,15 +27,15 @@ func GetAdvertisingMediaAccountStatusName(req string) string {
 // DimAdvertisingMediaAccountModel 广告媒体维度表
 type DimAdvertisingMediaAccountModel struct {
 	sql2.SqlBaseModel
-	PlatformId  int64           `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
-	AccountName string          `json:"account_name" gorm:"size:100;column:account_name;default:'';comment:帐户名称"`
-	AccountId   int64           `json:"account_id" gorm:"size:100;column:account_id;default:0;comment:帐户ID;uniqueIndex:ix_code_account"`
-	Status      string          `json:"status" gorm:"size:100;column:status;default:'';comment:状态"`
-	AuthId      int64           `json:"auth_id" gorm:"column:auth_id;default:0;comment:授权主键ID;index:ix_authid"`
-	Role        string          `json:"role" gorm:"column:role;default:'';comment:角色"`
-	Extension   string          `json:"extension" gorm:"type:json;column:extension;comment:扩展字段"`
-	Code        string          `json:"code" gorm:"size:50;column:code;default:'';comment:媒体码;uniqueIndex:ix_code_account"`
-	Db          func() *gorm.DB `json:"-" gorm:"-"`
+	PlatformId  int64              `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
+	AccountName string             `json:"account_name" gorm:"size:100;column:account_name;default:'';comment:帐户名称"`
+	AccountId   int64              `json:"account_id" gorm:"size:100;column:account_id;default:0;comment:帐户ID;uniqueIndex:ix_code_account"`
+	Status      string             `json:"status" gorm:"size:100;column:status;default:'';comment:状态"`
+	AuthId      int64              `json:"auth_id" gorm:"column:auth_id;default:0;comment:授权主键ID;index:ix_authid"`
+	Role        string             `json:"role" gorm:"column:role;default:'';comment:角色"`
+	Extension   sql2.CustomMapType `json:"extension" gorm:"type:json;column:extension;comment:扩展字段"`
+	Code        string             `json:"code" gorm:"size:50;column:code;default:'';comment:媒体码;uniqueIndex:ix_code_account"`
+	Db          func() *gorm.DB    `json:"-" gorm:"-"`
 }
 
 func (receiver *DimAdvertisingMediaAccountModel) TableName() string {

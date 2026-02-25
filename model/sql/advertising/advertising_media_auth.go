@@ -31,7 +31,7 @@ type DimAdvertisingMediaAuthModel struct {
 	AccountName           string                `json:"account_name" gorm:"size:100;column:account_name;default:'';comment:帐户名称"`
 	AccountId             int                   `json:"account_id" gorm:"size:100;column:account_id;default:0;comment:帐户ID;uniqueIndex:ix_plat_account"`
 	Status                string                `json:"status" gorm:"size:100;column:status;default:'';comment:状态"`
-	Extension             string                `json:"extension" gorm:"type:json;column:extension;comment:扩展字段"`
+	Extension             sql2.CustomMapType    `json:"extension" gorm:"type:json;column:extension;comment:扩展字段"`
 	AccessToken           string                `json:"access_token" gorm:"size:100;column:access_token;default:'';comment:授权令牌"`
 	RefreshToken          string                `json:"refresh_token" gorm:"size:512;column:refresh_token;default:'';comment:刷新令牌"`
 	ExpiresAt             sql2.MyCustomDatetime `json:"expires_at" gorm:"type:datetime(0);column:expires_at;comment:Access_Token过期时间"`
