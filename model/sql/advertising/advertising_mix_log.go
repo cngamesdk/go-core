@@ -126,8 +126,8 @@ type OdsAdvertisingMixLogModel struct {
 	CommonConfig  AdvertisingMixCommonConfig  `json:"common_config" gorm:"type:json;column:common_config;comment:常规配置;"`
 	AccountConfig AdvertisingMixAccountConfig `json:"account_config" gorm:"type:json;column:account_config;comment:帐户配置;"`
 	Ad1Config     AdvertisingMixAd1Config     `json:"ad1_config" gorm:"type:json;column:ad1_config;comment:一级配置;"`
-	Ad2Config     AdvertisingMixAd2Config     `json:"ad2_config" gorm:"type:json;column:account_config;comment:二级配置;"`
-	Ad3Config     AdvertisingMixAd3Config     `json:"ad3_config" gorm:"type:json;column:account_config;comment:三级配置;"`
+	Ad2Config     AdvertisingMixAd2Config     `json:"ad2_config" gorm:"type:json;column:ad2_config;comment:二级配置;"`
+	Ad3Config     AdvertisingMixAd3Config     `json:"ad3_config" gorm:"type:json;column:ad3_config;comment:三级配置;"`
 	MixConfig     AdvertisingMixConfig        `json:"mix_config" gorm:"type:json;column:mix_config;comment:组合配置;"`
 }
 
