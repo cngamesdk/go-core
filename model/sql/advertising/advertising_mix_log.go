@@ -129,6 +129,8 @@ type OdsAdvertisingMixLogModel struct {
 	Ad2Config     AdvertisingMixAd2Config     `json:"ad2_config" gorm:"type:json;column:ad2_config;comment:二级配置;"`
 	Ad3Config     AdvertisingMixAd3Config     `json:"ad3_config" gorm:"type:json;column:ad3_config;comment:三级配置;"`
 	MixConfig     AdvertisingMixConfig        `json:"mix_config" gorm:"type:json;column:mix_config;comment:组合配置;"`
+	OtherConfig   sql2.CustomMapType          `json:"other_config" gorm:"type:json;column:other_config;comment:其他配置;"`
+	Status        string                      `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
 }
 
 func (receiver *OdsAdvertisingMixLogModel) TableName() string {
