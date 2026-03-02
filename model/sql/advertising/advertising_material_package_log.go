@@ -26,8 +26,8 @@ func (args AdvertisingMaterialPackageConfig) Value() (driver.Value, error) {
 	return sql2.JsonValue(args)
 }
 
-// AdvertisingMaterialPackageLogModel 广告素材包模型
-type AdvertisingMaterialPackageLogModel struct {
+// OdsAdvertisingMaterialPackageLogModel 广告素材包模型
+type OdsAdvertisingMaterialPackageLogModel struct {
 	sql2.SqlBaseModel
 	Db         func() *gorm.DB                  `json:"-" gorm:"-"`
 	PlatformId int64                            `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
@@ -36,21 +36,21 @@ type AdvertisingMaterialPackageLogModel struct {
 	Status     string                           `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
 }
 
-func (receiver *AdvertisingMaterialPackageLogModel) TableName() string {
+func (receiver *OdsAdvertisingMaterialPackageLogModel) TableName() string {
 	return "ods_advertising_material_package_log"
 }
 
-func (receiver *AdvertisingMaterialPackageLogModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
+func (receiver *OdsAdvertisingMaterialPackageLogModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Select(fields).Where(query, args...).Take(receiver).Error
 	return
 }
 
-func (receiver *AdvertisingMaterialPackageLogModel) Create(ctx context.Context) (err error) {
+func (receiver *OdsAdvertisingMaterialPackageLogModel) Create(ctx context.Context) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
 	return
 }
 
-func (receiver *AdvertisingMaterialPackageLogModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
+func (receiver *OdsAdvertisingMaterialPackageLogModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args...).Updates(receiver).Error
 	return
 }
