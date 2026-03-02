@@ -25,8 +25,8 @@ func (args AdvertisingCopyPackageConfig) Value() (driver.Value, error) {
 	return sql2.JsonValue(args)
 }
 
-// AdvertisingCopyPackageLogModel 广告文案包
-type AdvertisingCopyPackageLogModel struct {
+// OdsAdvertisingCopyPackageLogModel 广告文案包
+type OdsAdvertisingCopyPackageLogModel struct {
 	sql2.SqlBaseModel
 	Db         func() *gorm.DB              `json:"-" gorm:"-"`
 	PlatformId int64                        `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
@@ -35,21 +35,21 @@ type AdvertisingCopyPackageLogModel struct {
 	Status     string                       `json:"status" gorm:"size:50;column:status;default:'';comment:状态;"`
 }
 
-func (receiver *AdvertisingCopyPackageLogModel) TableName() string {
+func (receiver *OdsAdvertisingCopyPackageLogModel) TableName() string {
 	return "ods_advertising_copy_package_log"
 }
 
-func (receiver *AdvertisingCopyPackageLogModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
+func (receiver *OdsAdvertisingCopyPackageLogModel) Take(ctx context.Context, fields string, query string, args ...interface{}) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Select(fields).Where(query, args...).Take(receiver).Error
 	return
 }
 
-func (receiver *AdvertisingCopyPackageLogModel) Create(ctx context.Context) (err error) {
+func (receiver *OdsAdvertisingCopyPackageLogModel) Create(ctx context.Context) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Create(receiver).Error
 	return
 }
 
-func (receiver *AdvertisingCopyPackageLogModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
+func (receiver *OdsAdvertisingCopyPackageLogModel) Updates(ctx context.Context, query interface{}, args ...interface{}) (err error) {
 	err = receiver.Db().WithContext(ctx).Table(receiver.TableName()).Where(query, args...).Updates(receiver).Error
 	return
 }
