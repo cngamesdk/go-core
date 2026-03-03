@@ -120,6 +120,7 @@ type AdvertisingMixMaterialConfig struct {
 type OdsAdvertisingMixLogModel struct {
 	sql2.SqlBaseModel
 	Db            func() *gorm.DB             `json:"-" gorm:"-"`
+	Name          string                      `json:"name" gorm:"size:50;column:name;default:'';comment:组合名称;uniqueIndex:ix_name;"`
 	UserId        int64                       `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;"`
 	PlatformId    int64                       `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
 	Code          string                      `json:"code" gorm:"size:50;column:code;default:'';comment:媒体码;"`
