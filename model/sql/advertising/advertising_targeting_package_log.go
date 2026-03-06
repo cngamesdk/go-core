@@ -31,6 +31,7 @@ func (args AdvertisingTargetingPackageConfig) Value() (driver.Value, error) {
 type OdsAdvertisingTargetingPackageLogModel struct {
 	sql2.SqlBaseModel
 	Db         func() *gorm.DB                   `json:"-" gorm:"-"`
+	Name       string                            `json:"name" gorm:"size:50;column:name;default:'';comment:定向包名称;"`
 	PlatformId int64                             `json:"platform_id" gorm:"column:platform_id;default:0;comment:平台ID;"`
 	UserId     int64                             `json:"user_id" gorm:"column:user_id;default:0;comment:用户ID;"`
 	Config     AdvertisingTargetingPackageConfig `json:"config" gorm:"type:json;column:config;comment:定向包配置;"`
