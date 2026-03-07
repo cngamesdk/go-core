@@ -26,8 +26,8 @@ type OdsAdvertisingOceanengineAppLogModel struct {
 	HistoryAccountId   int64                 `json:"history_account_id" gorm:"column:history_account_id;default:0;comment:历史来源账户id;"`
 	HistoryAccountType int64                 `json:"history_account_type" gorm:"column:history_account_type;default:0;comment:历史来源账户类型;"`
 	HistoryAccountName string                `json:"history_account_name" gorm:"size:100;column:history_account_name;default:'';comment:历史来源账户名称;"`
-	IsEbpAsset         bool                  `json:"is_ebp_asset" gorm:"column:is_ebp_asset;default:'0';comment:是否为EBP资产;"`
-	HasExtendPackage   bool                  `json:"has_extend_package" gorm:"column:has_extend_package;default:'0';comment:是否有分包;"`
+	IsEbpAsset         bool                  `json:"is_ebp_asset" gorm:"column:is_ebp_asset;comment:是否为EBP资产;"`
+	HasExtendPackage   bool                  `json:"has_extend_package" gorm:"column:has_extend_package;comment:是否有分包;"`
 	DownloadUrl        string                `json:"download_url" gorm:"size:512;column:download_url;default:'';comment:下载链接;"`
 	CreateTime         sql2.MyCustomDatetime `json:"create_time" gorm:"type:datetime(0);column:create_time;default:'';comment:创建时间;"`
 	Extension          string                `json:"extension" gorm:"type:json;column:extension;comment:扩展字段;"`
