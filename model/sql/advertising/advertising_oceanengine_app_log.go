@@ -20,7 +20,7 @@ type OdsAdvertisingOceanengineAppLogModel struct {
 	VersionCode        string                `json:"version_code" gorm:"size:100;column:version_code;default:'';comment:版本号;"`
 	VersionName        string                `json:"version_name" gorm:"size:100;column:version_name;default:'';comment:版本名称;"`
 	AppLogo            string                `json:"app_logo" gorm:"size:512;column:app_logo;default:'';comment:应用logo;"`
-	PublishTime        sql2.MyCustomDatetime `json:"publish_time" gorm:"type:type:datetime(0);column:publish_time;default:'';comment:发布时间;"`
+	PublishTime        sql2.MyCustomDatetime `json:"publish_time" gorm:"type:type:datetime(0);column:publish_time;comment:发布时间;"`
 	Reason             string                `json:"reason" gorm:"type:text;column:reason;comment:拒审原因;"`
 	SuccessReason      string                `json:"success_reason" gorm:"type:text;column:success_reason;comment:审核成功透传信息;"`
 	HistoryAccountId   int64                 `json:"history_account_id" gorm:"column:history_account_id;default:0;comment:历史来源账户id;"`
@@ -29,7 +29,7 @@ type OdsAdvertisingOceanengineAppLogModel struct {
 	IsEbpAsset         bool                  `json:"is_ebp_asset" gorm:"column:is_ebp_asset;comment:是否为EBP资产;"`
 	HasExtendPackage   bool                  `json:"has_extend_package" gorm:"column:has_extend_package;comment:是否有分包;"`
 	DownloadUrl        string                `json:"download_url" gorm:"size:512;column:download_url;default:'';comment:下载链接;"`
-	CreateTime         sql2.MyCustomDatetime `json:"create_time" gorm:"type:datetime(0);column:create_time;default:'';comment:创建时间;"`
+	CreateTime         sql2.MyCustomDatetime `json:"create_time" gorm:"type:datetime(0);column:create_time;comment:创建时间;"`
 	Extension          string                `json:"extension" gorm:"type:json;column:extension;comment:扩展字段;"`
 }
 
